@@ -58,7 +58,7 @@ In order to set up a reference database for DIAMOND, the makedb command needs to
 
 .. code-block :: bash
 
-	$ docker run --rm -v `pwd`:/data upendradevisetty/diamondblast:1.0 makedb --in /data/zebrafish.1.protein.faa -d /data/zebrafish_db
+	$ docker run --rm -v $PWD:/data upendradevisetty/diamondblast:1.0 makedb --in /data/zebrafish.1.protein.faa -d /data/zebrafish_db
 
 This will create a binary DIAMOND database file with the specified name ``zebrafish_db.dmnd`` in the ``diamond_test`` direcotry
 
@@ -68,7 +68,7 @@ The alignment task may then be initiated using the blastp command like this:
 
 .. code-block :: bash
 
-	$ docker run -v `pwd`:/data upendradevisetty/diamondblast:1.0 blastp --db /data/zebrafish_db -q /data/mouse.1.protein.faa -o /data/matches.m
+	$ docker run -v $PWD:/data upendradevisetty/diamondblast:1.0 blastp --db /data/zebrafish_db -q /data/mouse.1.protein.faa -o /data/matches.m
 
 The output file here is specified with the ``–o`` option and named ``matches.m8``. By default, it is generated in BLAST tabular format.
 
@@ -304,7 +304,7 @@ Next, we will see a Docker image from Rocker which will allow us to run RStudio 
 
 .. code-block:: bash
 
-	$ docker run --rm -d -v `pwd`:/data -p 8787:8787 rocker/rstudio:3.5.1
+	$ docker run --rm -d -v $PWD:/data -p 8787:8787 rocker/rstudio:3.5.1
 	330242b370fa38c2158f3ba31b09fb5ef41bc64763baeebdeff10008f3d37186
 
 .. Note:: 
