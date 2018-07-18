@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Docker &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Additional Docker Demo’s" href="dockerdemos.html" />
+    <link rel="prev" title="Introduction to Docker" href="dockerintro.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/agenda.html"><strong>Agenda</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/about_cyverse.html"><strong>About CyVerse</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dockerintro.html"><strong>Introduction to Docker</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Advanced Docker</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#managing-data-in-docker">1. Managing data in Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bind-mounts">1.1 Bind mounts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-a-container-with-a-bind-mount">1.1.1 Start a container with a bind mount</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-compose-for-multi-container-apps">2. Docker Compose for multi container apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#improving-your-data-science-workflow-using-docker-containers-containerized-data-science">3. Improving your data science workflow using Docker containers (Containerized Data Science)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dockerdemos.html"><strong>Additional Docker Demo’s</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Singularity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityintro.html"><strong>Introduction to Singularity</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityadvanced.html"><strong>Advanced Singularity</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../atmosphere/boot.html"><strong>Booting an Atmosphere computer instance for your use!</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_docker.html"><strong>Docker related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_singularity.html"><strong>Singularity related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_other.html"><strong>Other resources</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cybercarpentry_workshop_2018</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><strong>Advanced Docker</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docker/dockeradvanced.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-docker">
+<h1><strong>Advanced Docker</strong><a class="headerlink" href="#advanced-docker" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/docker.jpg"><img alt="../_images/docker.jpg" src="../_images/docker.jpg" style="width: 150px; height: 150px;" /></a>
+<p>This is the advanced session of Docker. The topics include Managing data in Docker containers, Docker compose for building multiple containers, Docker for Data science, etc.</p>
+<div class="section" id="managing-data-in-docker">
+<h2>1. Managing data in Docker<a class="headerlink" href="#managing-data-in-docker" title="Permalink to this headline">¶</a></h2>
+<p>From the above examples, we learned that a running Docker container is an isolated environment created from an Docker image.  This means, although it is possible to store data within the “writable layer” of a container, there are some limitations:</p>
+<ul class="simple">
+<li>The data doesn’t persist when that container is no longer running, and it can be difficult to get the data out of the container if another process needs it.</li>
+<li>A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.</li>
+</ul>
+<p>Docker offers three different ways to mount data into a container from the Docker host: <strong>volumes</strong>, <strong>bind mounts</strong>, or <strong>tmpfs volumes</strong>. For simplicity, we will only discuss bind mounts here, even though volumes is the more powerful and usable option for most use cases.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you’re using Docker for Windows make sure you have <a class="reference external" href="https://docs.docker.com/docker-for-windows/#shared-drives">shared your drive</a>.</p>
+</div>
+<div class="section" id="bind-mounts">
+<h3>1.1 Bind mounts<a class="headerlink" href="#bind-mounts" title="Permalink to this headline">¶</a></h3>
+<p><strong>Bind mounts:</strong> When you use a bind mount, a file or directory on the host machine is mounted into a container.</p>
+<a class="reference internal image-reference" href="../_images/bind_mount.png"><img alt="../_images/bind_mount.png" class="align-center" src="../_images/bind_mount.png" style="width: 400.0px; height: 350.0px;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ol class="last arabic simple">
+<li>One side effect of using bind mounts, for better or for worse, is that you can change the host filesystem via processes running in a container, including creating, modifying, or deleting important system files or directories. This is a powerful ability which can have security implications, including impacting non-Docker processes on the host system.</li>
+<li>If you use bind-mount a file or directory that does not yet exist on the Docker host, Docker does not automatically create it for you, but generates an error. So make sure that file or directory exists before mounting it to the container.</li>
+</ol>
+</div>
+<div class="section" id="start-a-container-with-a-bind-mount">
+<h4>1.1.1 Start a container with a bind mount<a class="headerlink" href="#start-a-container-with-a-bind-mount" title="Permalink to this headline">¶</a></h4>
+<p>To demonstrate how bind mount works, we will use the <code class="docutils literal notranslate"><span class="pre">diamondblast:1.0</span></code> image that we created in docker intro section</p>
+<ul class="simple">
+<li>Download some test data for testing <code class="docutils literal notranslate"><span class="pre">diamondblast:1.0</span></code> image using bind mount method</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir diamond_test <span class="o">&amp;&amp;</span> <span class="nb">cd</span> diamond_test
+$ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/mouse.1.protein.faa
+$ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/zebrafish.1.protein.faa
+</pre></div>
+</div>
+<ul class="simple">
+<li>Making the blast database</li>
+</ul>
+<p>In order to set up a reference database for DIAMOND, the makedb command needs to be executed with the following command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 makedb --in /data/zebrafish.1.protein.faa -d /data/zebrafish_db
+</pre></div>
+</div>
+<p>This will create a binary DIAMOND database file with the specified name <code class="docutils literal notranslate"><span class="pre">zebrafish_db.dmnd</span></code> in the <code class="docutils literal notranslate"><span class="pre">diamond_test</span></code> direcotry</p>
+<ul class="simple">
+<li>Running the alignment</li>
+</ul>
+<p>The alignment task may then be initiated using the blastp command like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 blastp --db /data/zebrafish_db -q /data/mouse.1.protein.faa -o /data/matches.m
+</pre></div>
+</div>
+<p>The output file here is specified with the <code class="docutils literal notranslate"><span class="pre">–o</span></code> option and named <code class="docutils literal notranslate"><span class="pre">matches.m8</span></code>. By default, it is generated in BLAST tabular format.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">-v</span></code> Consists of three fields, separated by colon characters (:).
+- The first field is the path of the directory or file.
+- The second field is the path where the file or directory are mounted in the container.
+- The third field is optional, and is a comma-separated list of options, such as <code class="docutils literal notranslate"><span class="pre">ro</span></code>.</p>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">inspect</span> <span class="pre">$(docker</span> <span class="pre">ps</span> <span class="pre">-lq)</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-A</span> <span class="pre">9</span> <span class="pre">Mounts</span></code> to verify that the bind mount was created correctly. Look for the “Mounts” section</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker inspect <span class="k">$(</span>docker ps -lq<span class="k">)</span> <span class="p">|</span> grep -A <span class="m">9</span> Mounts
+<span class="s2">&quot;Mounts&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;Type&quot;</span>: <span class="s2">&quot;bind&quot;</span>,
+        <span class="s2">&quot;Source&quot;</span>: <span class="s2">&quot;/home/upendra/diamond_test&quot;</span>,
+        <span class="s2">&quot;Destination&quot;</span>: <span class="s2">&quot;/data&quot;</span>,
+        <span class="s2">&quot;Mode&quot;</span>: <span class="s2">&quot;&quot;</span>,
+        <span class="s2">&quot;RW&quot;</span>: true,
+        <span class="s2">&quot;Propagation&quot;</span>: <span class="s2">&quot;rprivate&quot;</span>
+    <span class="o">}</span>
+<span class="o">]</span>,
+</pre></div>
+</div>
+<p>This shows that the mount is a bind mount, it shows the correct source and target, it shows that the mount is read-write, and that the propagation is set to rprivate.</p>
+</div>
+</div>
+</div>
+<div class="section" id="docker-compose-for-multi-container-apps">
+<h2>2. Docker Compose for multi container apps<a class="headerlink" href="#docker-compose-for-multi-container-apps" title="Permalink to this headline">¶</a></h2>
+<p><strong>Docker Compose</strong> is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. To learn more about all the features of Compose, see the list of <a class="reference external" href="https://docs.docker.com/compose/overview/#features">features</a></p>
+<p>Main advantages of Docker compose include:</p>
+<ul class="simple">
+<li>Your applications can be defined in a YAML file where all the options that you used in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> are now defined (Reproducibility).</li>
+<li>It allows you to manage your application as a single entity rather than dealing with individual containers (Simplicity).</li>
+</ul>
+<p>Let’s now create a simple web app with Docker Compose using Flask and Redis. We will end up with a Flask container and a Redis container all on one host.</p>
+<p>2.1.1 Clone the repo that container Docker compose code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/upendrak/compose_flask.git
+$ <span class="nb">cd</span> compose_flask
+</pre></div>
+</div>
+<p>In the github repo you will find 4 files - Dockerfile, requirements.txt file, app.py and finally docker-compose.yml file</p>
+<p>Using Compose is a three-step process, which is best explained with a short example.</p>
+<ol class="arabic simple">
+<li>First, you define your app’s environment with a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> so it can run anywhere</li>
+<li>Next, you define the components that make up your app in <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> so they can be run together in an isolated environment</li>
+</ol>
+<p>A brief explanation of <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> is as below:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">restart:</span> <span class="pre">always</span></code> means that it will restart whenever it fails.</li>
+<li>We define two services, <strong>web</strong> and <strong>redis</strong>.</li>
+<li>The web service builds from the Dockerfile in the current directory.</li>
+<li>Forwards the container’s exposed port (5000) to port 8888 on the host.</li>
+<li>Mounts the project directory on the host to /code inside the container (allowing you to modify the code without having to rebuild the image).</li>
+<li><code class="docutils literal notranslate"><span class="pre">depends_on</span></code> links the web service to the Redis service.</li>
+<li>The redis service uses the latest Redis image from Docker Hub.</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li>Lastly, run docker-compose up and Compose will start and run your entire app, determining the right order to start everything in, and building and pulling any images as necessary</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose up -d
+
+Building web
+Step <span class="m">1</span>/5 : FROM python:2.7
+<span class="m">2</span>.7: Pulling from library/python
+f49cf87b52c1: Already exists
+7b491c575b06: Already exists
+b313b08bab3b: Already exists
+51d6678c3f0e: Already exists
+09f35bd58db2: Already exists
+f7e0c30e74c6: Pull <span class="nb">complete</span>
+c308c099d654: Pull <span class="nb">complete</span>
+339478b61728: Pull <span class="nb">complete</span>
+Digest: sha256:8cb593cb9cd1834429f0b4953a25617a8457e2c79b3e111c0f70bffd21acc467
+Status: Downloaded newer image <span class="k">for</span> python:2.7
+ ---&gt; 9e92c8430ba0
+Step <span class="m">2</span>/5 : ADD . /code
+ ---&gt; 746bcecfc3c9
+Step <span class="m">3</span>/5 : WORKDIR /code
+ ---&gt; c4cf3d6cb147
+Removing intermediate container 84d850371a36
+Step <span class="m">4</span>/5 : RUN pip install -r requirements.txt
+ ---&gt; Running in d74c2e1cfbf7
+Collecting flask <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading Flask-0.12.2-py2.py3-none-any.whl <span class="o">(</span>83kB<span class="o">)</span>
+Collecting redis <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line <span class="m">2</span><span class="o">))</span>
+  Downloading redis-2.10.6-py2.py3-none-any.whl <span class="o">(</span>64kB<span class="o">)</span>
+Collecting itsdangerous&gt;<span class="o">=</span><span class="m">0</span>.21 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading itsdangerous-0.24.tar.gz <span class="o">(</span>46kB<span class="o">)</span>
+Collecting Jinja2&gt;<span class="o">=</span><span class="m">2</span>.4 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading Jinja2-2.10-py2.py3-none-any.whl <span class="o">(</span>126kB<span class="o">)</span>
+Collecting Werkzeug&gt;<span class="o">=</span><span class="m">0</span>.7 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading Werkzeug-0.14.1-py2.py3-none-any.whl <span class="o">(</span>322kB<span class="o">)</span>
+Collecting click&gt;<span class="o">=</span><span class="m">2</span>.0 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading click-6.7-py2.py3-none-any.whl <span class="o">(</span>71kB<span class="o">)</span>
+Collecting MarkupSafe&gt;<span class="o">=</span><span class="m">0</span>.23 <span class="o">(</span>from Jinja2&gt;<span class="o">=</span><span class="m">2</span>.4-&gt;flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+  Downloading MarkupSafe-1.0.tar.gz
+Building wheels <span class="k">for</span> collected packages: itsdangerous, MarkupSafe
+  Running setup.py bdist_wheel <span class="k">for</span> itsdangerous: started
+  Running setup.py bdist_wheel <span class="k">for</span> itsdangerous: finished with status <span class="s1">&#39;done&#39;</span>
+  Stored in directory: /root/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
+  Running setup.py bdist_wheel <span class="k">for</span> MarkupSafe: started
+  Running setup.py bdist_wheel <span class="k">for</span> MarkupSafe: finished with status <span class="s1">&#39;done&#39;</span>
+  Stored in directory: /root/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
+Successfully built itsdangerous MarkupSafe
+Installing collected packages: itsdangerous, MarkupSafe, Jinja2, Werkzeug, click, flask, redis
+Successfully installed Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7 flask-0.12.2 itsdangerous-0.24 redis-2.10.6
+ ---&gt; 5cc574ff32ed
+Removing intermediate container d74c2e1cfbf7
+Step <span class="m">5</span>/5 : CMD python app.py
+ ---&gt; Running in 3ddb7040e8be
+ ---&gt; e911b8e8979f
+Removing intermediate container 3ddb7040e8be
+Successfully built e911b8e8979f
+Successfully tagged composeflask_web:latest
+</pre></div>
+</div>
+<p>And that’s it! You should be able to see the Flask application running on <code class="docutils literal notranslate"><span class="pre">&lt;ipaddress&gt;:8888</span></code></p>
+<a class="reference internal image-reference" href="../_images/dc-1.png"><img alt="../_images/dc-1.png" src="../_images/dc-1.png" style="width: 750px; height: 350px;" /></a>
+</div>
+<div class="section" id="improving-your-data-science-workflow-using-docker-containers-containerized-data-science">
+<h2>3. Improving your data science workflow using Docker containers (Containerized Data Science)<a class="headerlink" href="#improving-your-data-science-workflow-using-docker-containers-containerized-data-science" title="Permalink to this headline">¶</a></h2>
+<p>For a data scientist, running a container that is already equipped with the libraries and tools needed for a particular analysis eliminates the need to spend hours debugging packages across different environments or configuring custom environments.</p>
+<p>But why Set Up a Data Science Environment in a Container?</p>
+<ul class="simple">
+<li>One reason is speed. We want data scientists using our platform to launch a Jupyter or RStudio or TensorFlow session in minutes, not hours. We also want them to have that fast user experience while still working in a governed, central architecture (rather than on their local machines).</li>
+<li>Containerization benefits both data science and IT/technical operations teams.</li>
+<li>Ultimately, containers solve a lot of common problems associated with doing data science work at the enterprise level. They take the pressure off of IT to produce custom environments for every analysis, standardize how data scientists work, and ensure that old code doesn’t stop running because of environment changes. To start using containers and our library of curated images to do collaborative data science work, request a demo of our platform today.</li>
+<li>Configuring a data science environment can be a pain. Dealing with inconsistent package versions, having to dive through obscure error messages, and having to wait hours for packages to compile can be frustrating. This makes it hard to get started with data science in the first place, and is a completely arbitrary barrier to entry.</li>
+</ul>
+<p>Thanks to the rich ecosystem, there are already several readily available images for the common components in data science pipelines. Here are some Docker images to help you quickly spin up your own data science pipeline:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://hub.docker.com/_/mysql/">MySQL</a></li>
+<li><a class="reference external" href="https://hub.docker.com/_/postgres/">Postgres</a></li>
+<li><a class="reference external" href="https://hub.docker.com/_/redmine/">Redmine</a></li>
+<li><a class="reference external" href="https://hub.docker.com/_/mongo/">MongoDB</a></li>
+<li><a class="reference external" href="https://hub.docker.com/r/sequenceiq/hadoop-docker/">Hadoop</a></li>
+<li><a class="reference external" href="https://hub.docker.com/r/sequenceiq/spark/">Spark</a></li>
+<li><a class="reference external" href="https://hub.docker.com/r/wurstmeister/zookeeper/">Zookeeper</a></li>
+<li><a class="reference external" href="https://github.com/spotify/docker-kafka">Kafka</a></li>
+<li><a class="reference external" href="https://hub.docker.com/_/cassandra/">Cassandra</a></li>
+<li><a class="reference external" href="https://github.com/wurstmeister/storm-docker">Storm</a></li>
+<li><a class="reference external" href="https://github.com/apache/flink/tree/master/flink-contrib/docker-flink">Flink</a></li>
+<li><a class="reference external" href="https://github.com/rocker-org/rocker">R</a></li>
+</ul>
+<p>Motivation: Say you want to play around with some cool data science libraries in Python or R but what you don’t want to do is spend hours on installing Python or R, working out what libraries you need, installing each and every one and then messing around with the tedium of getting things to work just right on your version of Linux/Windows/OSX/OS9 — well this is where Docker comes to the rescue! With Docker we can get a Jupyter ‘Data Science’ notebook stack up and running in no time at all. Let’s get started! We will see few examples of thse in the following sections…</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above code can be found in this <a class="reference external" href="https://github.com/upendrak/jupyternotebook_docker">github</a></p>
+</div>
+<ol class="arabic simple">
+<li>Launch a Jupyter notebook conatiner</li>
+</ol>
+<p>Docker allows us to run a ‘ready to go’ Jupyter data science stack in what’s known as a container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ezj
+/usr/bin/python3
+DEBUG: using python version <span class="m">3</span>
+DEBUG: downloading anaconda binary, may take a few minutes
+DEBUG: install Anaconda
+<span class="nv">PREFIX</span><span class="o">=</span>/opt/anaconda3
+installing: python-3.6.4-hc3d631a_1 ...
+</pre></div>
+</div>
+<p>The last line is a URL that we need to copy and paste into our browser to access our new Jupyter stack:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    Copy/paste this URL into your browser when you connect <span class="k">for</span> the first time,
+to login with a token:
+    http://149.165.169.252:8888/?token<span class="o">=</span>13fffde91fc7006441e4e68656bb1385945fc26216b446be
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not copy and paste the above URL in your browser as this URL is specific to my environment.</p>
+</div>
+<p>Once you’ve done that you should be greeted by your very own containerised Jupyter service!</p>
+<a class="reference internal image-reference" href="../_images/jn_login.png"><img alt="../_images/jn_login.png" src="../_images/jn_login.png" style="width: 750px; height: 350px;" /></a>
+<p>To create your first notebook, drill into the work directory and then click on the ‘New’ button on the right hand side and choose ‘Python 3’ to create a new Python 3 based Notebook.</p>
+<a class="reference internal image-reference" href="../_images/jn_login2.png"><img alt="../_images/jn_login2.png" src="../_images/jn_login2.png" style="width: 750px; height: 350px;" /></a>
+<p>Now you can write your python code. Here is an example</p>
+<a class="reference internal image-reference" href="../_images/jn_login3.png"><img alt="../_images/jn_login3.png" src="../_images/jn_login3.png" style="width: 750px; height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/jn_login3.5.png"><img alt="../_images/jn_login3.5.png" src="../_images/jn_login3.5.png" style="width: 750px; height: 350px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want a <cite>R</cite> kernel in Jupyter notebook, then you should run it as <code class="docutils literal notranslate"><span class="pre">ezj</span> <span class="pre">-R</span></code></p>
+</div>
+<a class="reference internal image-reference" href="../_images/r_kernel.png"><img alt="../_images/r_kernel.png" src="../_images/r_kernel.png" style="width: 750px; height: 350px;" /></a>
+<p>To shut down the container once you’re done working, simply hit Ctrl-C in the terminal/command prompt. Your work will all be saved on your actual machine in the path we set in our Docker compose file. And there you have it — a quick and easy way to start using Jupyter notebooks with the magic of Docker.</p>
+<ol class="arabic simple" start="2">
+<li>Launch a R-Studio container</li>
+</ol>
+<p>Next, we will see a Docker image from Rocker which will allow us to run RStudio inside the container and has many useful R packages already installed.</p>
+<a class="reference internal image-reference" href="../_images/rstudio_ss.png"><img alt="../_images/rstudio_ss.png" src="../_images/rstudio_ss.png" style="width: 750px; height: 350px;" /></a>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm -d -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data -p <span class="m">8787</span>:8787 rocker/rstudio:3.5.1
+330242b370fa38c2158f3ba31b09fb5ef41bc64763baeebdeff10008f3d37186
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">–rm</span></code> ensures that when we quit the container, the container is deleted. If we did not do this, everytime we run a container, a version of it will be saved to our local computer. This can lead to the eventual wastage of a lot of disk space until we manually remove these containers.</p>
+</div>
+<p>The command above will lead RStudio-Server to launch invisibly. To connect to it, open a browser and enter &lt;ipaddress&gt;:8787 on cloud</p>
+<a class="reference internal image-reference" href="../_images/rstudio_login2.png"><img alt="../_images/rstudio_login2.png" src="../_images/rstudio_login2.png" style="width: 750px; height: 350px;" /></a>
+<p>Enter <code class="docutils literal notranslate"><span class="pre">rstudio</span></code> as username and password. Finally Rstudio shows up and you can run your R command from here</p>
+<a class="reference internal image-reference" href="../_images/rstudio_login.png"><img alt="../_images/rstudio_login.png" src="../_images/rstudio_login.png" style="width: 750px; height: 350px;" /></a>
+<p>In order to see the directory that is currently mounted on inside the container, click <cite>…</cite> in the right hand down window of Rstudio which open up a dialog box. Now enter <cite>/data</cite> which is the location of mounted directory inside the container</p>
+<a class="reference internal image-reference" href="../_images/rstudio-2.png"><img alt="../_images/rstudio-2.png" src="../_images/rstudio-2.png" style="width: 750px; height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/rstudio-3.png"><img alt="../_images/rstudio-3.png" src="../_images/rstudio-3.png" style="width: 750px; height: 350px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dockerdemos.html" class="btn btn-neutral float-right" title="Additional Docker Demo’s" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dockerintro.html" class="btn btn-neutral" title="Introduction to Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, CyVerse.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/cyverse.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Docker &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Docker" href="dockeradvanced.html" />
+    <link rel="prev" title="About CyVerse" href="../getting_started/about_cyverse.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/agenda.html"><strong>Agenda</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/about_cyverse.html"><strong>About CyVerse</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Introduction to Docker</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-installation">2. Docker Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xsede-jetstream-cyverse-atmosphere-clouds">2.1 XSEDE Jetstream / CyVerse Atmosphere Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-docker-containers">3. Running Docker containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-docker-container-from-a-custom-docker-image">3.1 Running Docker container from a custom Docker image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-images">4. Docker images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-registry">5. Docker Registry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#push-the-iamge-to-dockerhub-registry">5.1.2 Push the iamge to Dockerhub registry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.1.2.1 Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-your-docker-hub-account-to-github">5.1.2.2 Link your Docker Hub account to GitHub</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pull-the-image-from-dockerhub-registry">5.1.1 Pull the image from Dockerhub registry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dockeradvanced.html"><strong>Advanced Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dockerdemos.html"><strong>Additional Docker Demo’s</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Singularity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityintro.html"><strong>Introduction to Singularity</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityadvanced.html"><strong>Advanced Singularity</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../atmosphere/boot.html"><strong>Booting an Atmosphere computer instance for your use!</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_docker.html"><strong>Docker related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_singularity.html"><strong>Singularity related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_other.html"><strong>Other resources</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cybercarpentry_workshop_2018</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><strong>Introduction to Docker</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docker/dockerintro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-to-docker">
+<h1><strong>Introduction to Docker</strong><a class="headerlink" href="#introduction-to-docker" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/docker.jpg"><img alt="../_images/docker.jpg" src="../_images/docker.jpg" style="width: 150px; height: 150px;" /></a>
+<p>This is the introductory session of Docker. The topics include Docker installation, running prebuilt Docker containers, managing data in Docker, and exposing container ports. This session gets you ready to run most of the existing Docker containers.</p>
+<div class="section" id="prerequisites">
+<h2>1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor. Prior experience in python will be helpful but is not required.</p>
+</div>
+<div class="section" id="docker-installation">
+<h2>2. Docker Installation<a class="headerlink" href="#docker-installation" title="Permalink to this headline">¶</a></h2>
+<p>Getting all the tooling setup on your computer can be a daunting task, but not with Docker. Getting Docker up and running on your favorite OS (Mac/Windows/Linux) is very easy.</p>
+<p>The getting started guide on Docker has detailed instructions for setting up Docker on <a class="reference external" href="https://docs.docker.com/docker-for-mac/install/">Mac</a>/<a class="reference external" href="https://docs.docker.com/docker-for-windows/install/">Windows</a>/<a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Linux</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you’re using an older version of Windows or MacOS you may need to use <a class="reference external" href="https://docs.docker.com/machine/overview/">Docker Machine</a> instead. All commands work in either bash or Powershell on Windows.</p>
+</div>
+</div>
+<div class="section" id="xsede-jetstream-cyverse-atmosphere-clouds">
+<h2>2.1 XSEDE Jetstream / CyVerse Atmosphere Clouds<a class="headerlink" href="#xsede-jetstream-cyverse-atmosphere-clouds" title="Permalink to this headline">¶</a></h2>
+<p>CyVerse staff have deployed an Ansible playbooks called <code class="docutils literal notranslate"><span class="pre">ez</span></code> installation which includes Docker that only requires you to type a short line of code.</p>
+<p>Start a featured instance on Jetstream [needs to insert link to Jetstream’s launching instance].</p>
+<p>Type in the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ezd
+
+* Updating ez docker and installing docker (this may take a few minutes, coffee break!)
+Cloning into &#39;/opt/cyverse-ez-docker&#39;...
+remote: Counting objects: 38, done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 38 (delta 1), reused 0 (delta 0), pack-reused 31
+Unpacking objects: 100% (38/38), done.
+* docker was updated successfully
+
+You shouldn&#39;t need to use ezd again on this system, unless you want to update docker itself
+
+To test docker, type: docker run hello-world
+</pre></div>
+</div>
+<p>Let’s test docker by running <cite>docker run hello-world</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run hello-world
+</pre></div>
+</div>
+<p>You should see an error like this</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Got permission denied <span class="k">while</span> trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/json?all<span class="o">=</span><span class="m">1</span>: dial unix /var/run/docker.sock: connect: permission denied
+</pre></div>
+</div>
+<p>This is because Docker needs root access to run Docker commands and so either can append <cite>sudo</cite> infront of each command (and you have sudo permissions on Jetstream instance) or add yourself to the Docker group using following instructions..</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo usermod -aG docker <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Log out and log back in so that your group membership is re-evaluated.</p>
+<p>Rerun the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> command to make sure the everything is working fine</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run hello-world
+Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
+latest: Pulling from library/hello-world
+03f4658f8b78: Pull <span class="nb">complete</span>
+a3ed95caeb02: Pull <span class="nb">complete</span>
+Digest: sha256:8be990ef2aeb16dbcb9271ddfe2610fa6658d13f6dfb8bc72074cc1ca36966a7
+Status: Downloaded newer image <span class="k">for</span> hello-world:latest
+
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ <span class="m">1</span>. The Docker client contacted the Docker daemon.
+ <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
+ <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+$ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+https://hub.docker.com/
+
+For more examples and ideas, visit:
+https://docs.docker.com/engine/userguide/
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-docker-containers">
+<h2>3. Running Docker containers<a class="headerlink" href="#running-docker-containers" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have everything setup, it’s time to get our hands dirty. In this section, you are going to run a container from <a class="reference external" href="http://www.alpinelinux.org/">Alpine Linux</a> (a lightweight linux distribution) image on your system and get a taste of the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command.</p>
+<p>But wait, what exactly is a Container and Image?</p>
+<p><strong>Containers</strong> - Running instances of Docker images. Containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS.</p>
+<p><strong>Images</strong> - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">inspect</span> <span class="pre">hello-world</span></code> and <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">history</span> <span class="pre">hello-world</span></code>.</p>
+<p>Now that we know what a container and image is, let’s run the following command in our terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine
+</pre></div>
+</div>
+<p>What happened there? Similar to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> command in the demo above, <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code> command fetches the <code class="docutils literal notranslate"><span class="pre">alpine:latest</span></code> image from the Docker registry first, saves it in our system. However unlike <cite>hello-world</cite> run, here we don’t see any output on the screen. This is because <cite>alpine</cite> and <cite>ubuntu</cite> (which we see later) are base images and doesn’t have any executable that produces any kind of output. They however launches a container and since the container doesn’t have executable, they quickly exits. You can check the status of container by running the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+b4219971d6e5        alpine              <span class="s2">&quot;/bin/sh&quot;</span>           <span class="m">7</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">7</span> minutes ago                       vigilant_goodall
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code> command shows the status of last container run and as you can see the container has been exited from the <code class="docutils literal notranslate"><span class="pre">alpine</span></code> run.</p>
+<p>Let’s add some commands to the container run this time.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine <span class="nb">echo</span> <span class="s2">&quot;Hello world&quot;</span>
+Hello world
+</pre></div>
+</div>
+<p>OK, that’s some actual output. In this case, the Docker client dutifully ran the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command in our <code class="docutils literal notranslate"><span class="pre">alpine</span></code> container and then exited it. If you’ve noticed, all of that happened pretty quickly. Imagine booting up a virtual machine, running a command and then killing it. Now you know why they say containers are fast!</p>
+<p>Let’s say if you wanted to see files and folders inside the <code class="docutils literal notranslate"><span class="pre">alpine</span></code> container, then you can run the following</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine ls -l /
+total <span class="m">52</span>
+drwxr-xr-x    <span class="m">2</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> bin
+drwxr-xr-x    <span class="m">5</span> root     root           <span class="m">340</span> Jan <span class="m">28</span> <span class="m">09</span>:52 dev
+drwxr-xr-x   <span class="m">14</span> root     root          <span class="m">4096</span> Jan <span class="m">28</span> <span class="m">09</span>:52 etc
+drwxr-xr-x    <span class="m">2</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> home
+drwxr-xr-x    <span class="m">5</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> lib
+drwxr-xr-x    <span class="m">5</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> media
+........
+</pre></div>
+</div>
+<p>When you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code>, you provided a command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/</span></code>, so Docker started the command specified and you saw the listing</p>
+<p>Try another command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine sh
+</pre></div>
+</div>
+<p>Wait, nothing happened! Is that a bug? Well, no. These interactive shells will exit after running any scripted commands such as <code class="docutils literal notranslate"><span class="pre">sh</span></code>, unless they are run in an interactive terminal - so for this example to not exit, you need to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">alpine</span> <span class="pre">sh</span></code>. You are now inside the container shell and you can try out a few commands like <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code>, <code class="docutils literal notranslate"><span class="pre">whoami</span></code> and others.</p>
+<p>Before doing that, now it’s time to see the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command which shows you all containers that are currently running.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</pre></div>
+</div>
+<p>Since no containers are running, you see a blank line. Let’s try a more useful variant: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+36171a5da744        alpine              <span class="s2">&quot;/bin/sh&quot;</span>                <span class="m">5</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">2</span> minutes ago                        fervent_newton
+a6a9d46d0b2f        alpine             <span class="s2">&quot;echo &#39;hello from alp&quot;</span>    <span class="m">6</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">6</span> minutes ago                        lonely_kilby
+ff0a5c3750b9        alpine             <span class="s2">&quot;ls -l&quot;</span>                   <span class="m">8</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">8</span> minutes ago                        elated_ramanujan
+c317d0a9e3d2        hello-world         <span class="s2">&quot;/hello&quot;</span>                 <span class="m">34</span> seconds ago      Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">12</span> minutes ago                       stupefied_mcclintock
+</pre></div>
+</div>
+<p>What you see above is a list of all containers that you ran. Notice that the STATUS column shows that these containers exited a few minutes ago.</p>
+<p>If you want to run scripted commands such as <code class="docutils literal notranslate"><span class="pre">sh</span></code>, they should be run in an interactive terminal. In addition, interactive terminal allows you to run more than one command in a container. Let’s try that now:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name alpine_test alpine sh
+/ <span class="c1"># whoami</span>
+root
+</pre></div>
+</div>
+<p>Running the <code class="docutils literal notranslate"><span class="pre">run</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-it</span></code> flags attaches us to an interactive <code class="docutils literal notranslate"><span class="pre">tty</span></code> in the container and <code class="docutils literal notranslate"><span class="pre">--name</span></code> is the name of the container (otherwise docker will name the container with some random name). Now you can run as many commands in the container as you want. Take some time to run your favorite commands.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">You don’t really have to use <cite>sh</cite> as by default when you enter into interactive model, it puts you into <cite>sh</cite> shell</p>
+</div>
+<p>Exit out of the container by giving the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/ <span class="c1"># exit</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If you type <code class="docutils literal notranslate"><span class="pre">exit</span></code> your <strong>container</strong> will exit and is no longer active. To check that, try the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                          PORTS                    NAMES
+de4bbc3eeaec        alpine                &quot;/bin/sh&quot;                3 minutes ago       Exited (0) About a minute ago                            alpine_test
+</pre></div>
+</div>
+<p>If you want to keep the container active, then you can use keys <code class="docutils literal notranslate"><span class="pre">Ctrl+p,</span> <span class="pre">Ctrl+q</span></code>. To make sure that it is not exited run the same <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code> command again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                         PORTS                    NAMES
+0db38ea51a48        alpine                &quot;sh&quot;                     3 minutes ago       Up 3 minutes                                            alpine_test
+</pre></div>
+</div>
+<p>Now if you want to get back into that container, then you can type <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">attach</span> <span class="pre">&lt;container</span> <span class="pre">id&gt;</span></code>. This way you can save your container:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker attach alpine_test
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-docker-container-from-a-custom-docker-image">
+<h3>3.1 Running Docker container from a custom Docker image<a class="headerlink" href="#running-docker-container-from-a-custom-docker-image" title="Permalink to this headline">¶</a></h3>
+<p>Let’s run a Docker container from a custom Docker image and we will learn how Docker images are built using Dockerfile. But first pull a <cite>lolcow</cite> Docker image from Dockerhub</p>
+<a class="reference internal image-reference" href="../_images/lolcow_docker.png"><img alt="../_images/lolcow_docker.png" src="../_images/lolcow_docker.png" style="width: 750px; height: 350px;" /></a>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm --name lolcow upendradevisetty/lolcow_docker:1.0
+Unable to find image <span class="s1">&#39;upendradevisetty/lolcow_docker:1.0&#39;</span> locally
+<span class="m">1</span>.0: Pulling from upendradevisetty/lolcow_docker
+b234f539f7a1: Already exists
+55172d420b43: Already exists
+5ba5bbeb6b91: Already exists
+43ae2841ad7a: Already exists
+f6c9c6de4190: Already exists
+8e55b0aed266: Already exists
+c2c7ed47afbc: Already exists
+Digest: sha256:37062c6724b6746ea75c9d11ca4a335d5590702368039ada7ff8801c8cc6620f
+Status: Downloaded newer image <span class="k">for</span> upendradevisetty/lolcow_docker:1.0
+ ____________________________________
+/ Q: What is orange and goes <span class="s2">&quot;click, \</span>
+<span class="s2">\ click?&quot;</span> A: A ball point carrot.    /
+ ------------------------------------
+        <span class="se">\ </span>  ^__^
+         <span class="se">\ </span> <span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+            <span class="o">(</span>__<span class="o">)</span><span class="se">\ </span>      <span class="o">)</span><span class="se">\/\</span>
+                <span class="o">||</span>----w <span class="p">|</span>
+                <span class="o">||</span>     <span class="o">||</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you have noticed, I am running <cite>docker run</cite> with an extra flag <cite>–rm</cite>. This flag is quite useful and it removes the container after the container exits. So you don’t have to manually remove them</p>
+</div>
+<p>Let’s take a look at the <a class="reference external" href="https://hub.docker.com/r/upendradevisetty/lolcow_docker/~/dockerfile/">Dockerfile</a> now for this image. Before that what exactly is a Dockerfile?</p>
+<p>A <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> is a text document that contains all the commands a user could call on the command line to assemble an image. Using <cite>docker build</cite> users can create an automated build that executes several command-line instructions in succession. Let’s create a Dockerfile for the above image</p>
+<p>Before we go further, let’s look at what those commands in Dockerfile mean</p>
+<p><strong>FROM</strong></p>
+<p>This instruction is used to set the base image for subsequent instructions. It is mandatory to set this in the first line of a Dockerfile. You can use it any number of times though.</p>
+<p><strong>MAINTAINER</strong></p>
+<p>This is a non-executable instruction used to indicate the author of the Dockerfile.</p>
+<p><strong>LABEL</strong></p>
+<p>You can assign metadata in the form of key-value pairs to the image using this instruction. It is important to notice that each LABEL instruction creates a new layer in the image, so it is best to use as few LABEL instructions as possible</p>
+<p><strong>RUN</strong></p>
+<p>This instruction lets you execute a command on top of an existing layer and create a new layer with the results of command execution</p>
+<p><strong>ENV</strong></p>
+<p>This defines Environmental variables (one or more) in the Docker image</p>
+<p><strong>CMD</strong></p>
+<p>This defines the commands that will run on the Image at start-up. Unlike a <strong>RUN</strong>, this does not create a new layer for the Image, but simply runs the command. There can only be one CMD per a Dockerfile/Image. If you need to run multiple commands, the best way to do that is to have the CMD run a script. CMD requires that you tell it where to run the command, unlike RUN.</p>
+</div>
+</div>
+<div class="section" id="docker-images">
+<h2>4. Docker images<a class="headerlink" href="#docker-images" title="Permalink to this headline">¶</a></h2>
+<p>Docker images are the basis of containers. In the previous example, you pulled the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker images
+REPOSITORY     TAG       IMAGE ID        CREATED           SIZE
+hello-world    latest    690ed74de00f    <span class="m">5</span> months ago      <span class="m">960</span> B
+alpine         latest    3fd9065eaf02    <span class="m">3</span> months ago      <span class="m">4</span>.15MB
+.........
+</pre></div>
+</div>
+<p>Above is a list of images that I’ve pulled from the registry and those I’ve created myself (we’ll shortly see how). You will have a different list of images on your machine. The <strong>TAG</strong> refers to a particular snapshot of the image and the <strong>ID</strong> is the corresponding unique identifier for that image.</p>
+<p># Exercise</p>
+<ul class="simple">
+<li>Build a Docker image for this tool - <a class="reference external" href="https://github.com/bbuchfink/diamond">Diamond blast</a></li>
+</ul>
+<p>Bonus:</p>
+<ul class="simple">
+<li>Can you build from the source instead of binaries for the same tool?</li>
+</ul>
+</div>
+<div class="section" id="docker-registry">
+<h2>5. Docker Registry<a class="headerlink" href="#docker-registry" title="Permalink to this headline">¶</a></h2>
+<p>You’ve built a Docker image. Now what?</p>
+<p>What exactly is a registry?</p>
+<p>A registry is a collection of repositories, and a repository is a collection of images—sort of like a GitHub repository, except the code is already built. An account on a registry can create many repositories. The docker CLI uses Docker’s public registry by default. You can even set up your own private registry using Docker Trusted Registry.</p>
+<p>What is Docker registry?</p>
+<p>A Docker registry is a place to store and distribute Docker images. It serves as a target for your docker push and docker pull commands. Before we get any further, let’s cover some of the basic terminology related to Docker registries. To get a new Docker image you can either get it from a registry (such as the Docker hub) or create your own. There are hundreds of thousands of images available on Docker hub.</p>
+<p>An important distinction with regard to images is between base images and child images and official images and user images (Both of which can be base images or child images.).</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p><strong>Base images</strong> are images that have no parent images, usually images with an OS like ubuntu, alpine or debian.</p>
+<p><strong>Child images</strong> are images that build on base images and add additional functionality.</p>
+<p><strong>Official images</strong> are Docker sanctioned images. Docker, Inc. sponsors a dedicated team that is responsible for reviewing and publishing all Official Repositories content. This team works in collaboration with upstream software maintainers, security experts, and the broader Docker community. These are not prefixed by an organization or user name. In the list of images above, the python, node, alpine and nginx images are official (base) images. To find out more about them, check out the Official Images Documentation.</p>
+<p class="last"><strong>User images</strong> are images created and shared by users like you. They build on base images and add additional functionality. Typically these are formatted as <code class="docutils literal notranslate"><span class="pre">user/image-name</span></code>. The user value in the image name is your Dockerhub user or organization name.</p>
+</div>
+<p>There are several things you can do with Docker registries:</p>
+<ul class="simple">
+<li>Pushing images</li>
+<li>Finding images</li>
+<li>Pulling images</li>
+<li>Sharing images</li>
+</ul>
+<p>Why Do I Need a Docker Registry?</p>
+<p>Imagine a workflow where you push a commit that triggers a build on your CI provider which in turn pushes a new image into your registry. Your registry can then fire off a webhook and trigger a deployment. All without a human having to step and manually do anything. Registries make a fully automated workflow like this much easier.</p>
+<p>As the previous example demonstrates, you will likely want to have a private registry for storing your proprietary images. A public registry such as the one on Docker Hub is hugely helpful for publicly available and open-source images. However, for your company’s private images, a private registry is what you need.</p>
+<p>The question then is: Public or Private?</p>
+<p>The decision to host your own private registry or to go with a public option is much like any other question of building it yourself versus outsourcing to a third party. Price, control, flexibility and maintenance all come into play. Instead of rehashing these arguments though, let’s instead just run through what your options are.</p>
+<p>Some example of public registries include <a class="reference external" href="https://cloud.docker.com/">Docker cloud</a>, <a class="reference external" href="https://hub.docker.com/">Docker hub</a>, <a class="reference external" href="https://quay.io/">quay.io</a>, <a class="reference external" href="https://aws.amazon.com/ecr/">AWS EC2 Container Registry (ECR)</a>, <cite>Google Container Registry (GCR)</cite> &lt;<a class="reference external" href="https://cloud.google.com/container-registry/">https://cloud.google.com/container-registry/</a>&gt;`_ etc.,</p>
+<div class="section" id="push-the-iamge-to-dockerhub-registry">
+<h3>5.1.2 Push the iamge to Dockerhub registry<a class="headerlink" href="#push-the-iamge-to-dockerhub-registry" title="Permalink to this headline">¶</a></h3>
+<p>An automated build is a Docker image build that is triggered by a code change in a GitHub or Bitbucket repository. By linking a remote code repository to a Dockerhub automated build repository, you can build a new Docker image every time a code change is pushed to your code repository.</p>
+<a class="reference internal image-reference" href="../_images/auto-build-fig.png"><img alt="../_images/auto-build-fig.png" src="../_images/auto-build-fig.png" style="width: 750px; height: 250px;" /></a>
+<p>A build context is a Dockerfile and any files at a specific location. For an automated build, the build context is a repository containing a Dockerfile.</p>
+<p>Automated Builds have several advantages:</p>
+<ul class="simple">
+<li>Images built in this way are built exactly as specified.</li>
+<li>The Dockerfile is available to anyone with access to your Docker Hub repository.</li>
+<li>Your repository is kept up-to-date with code changes automatically.</li>
+<li>Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.</li>
+</ul>
+<div class="section" id="id2">
+<h4>5.1.2.1 Prerequisites<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>To use automated builds, you first must have an account on <a class="reference external" href="https://hub.docker.com">Docker Hub</a> and on the hosted repository provider (<a class="reference external" href="https://github.com/">GitHub</a> or <a class="reference external" href="https://bitbucket.org/">Bitbucket</a>). While Dockerhub supports linking both GitHub and Bitbucket repositories, here we will use a GitHub repository. If you don’t already have one, make sure you have a GitHub account. A basic github account is free</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>If you have previously linked your Github or Bitbucket account, you must have chosen the Public and Private connection type. To view your current connection settings, log in to Docker Hub and choose Profile &gt; Settings &gt; Linked Accounts &amp; Services.</li>
+<li>Building Windows containers is not supported.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="link-your-docker-hub-account-to-github">
+<h4>5.1.2.2 Link your Docker Hub account to GitHub<a class="headerlink" href="#link-your-docker-hub-account-to-github" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Log into Docker Hub.</li>
+<li>Navigate to <a class="reference external" href="https://hub.docker.com/account/authorized-services/">Profile &gt; Settings &gt; Linked Accounts &amp; Services</a>.</li>
+<li>Click the <code class="docutils literal notranslate"><span class="pre">Link</span> <span class="pre">GitHub</span></code>.
+The system prompts you to choose between <strong>Public and Private</strong> and <strong>Limited Access</strong>. The <strong>Public</strong> and <strong>Private</strong> connection type is required if you want to use the Automated Builds.</li>
+<li>Press <code class="docutils literal notranslate"><span class="pre">Select</span></code> under <strong>Public and Private</strong> connection type.
+If you are not logged into GitHub, the system prompts you to enter GitHub credentials before prompting you to grant access. After you grant access to your code repository, the system returns you to Docker Hub and the link is complete.</li>
+</ol>
+<p>After you grant access to your code repository, the system returns you to Docker Hub and the link is complete. For example, github linked hosted repository looks like this:</p>
+<a class="reference internal image-reference" href="../_images/auto_build-1.png"><img alt="../_images/auto_build-1.png" src="../_images/auto_build-1.png" style="width: 750px; height: 350px;" /></a>
+<p>Let’s look at an example for Automated build.</p>
+<p>Let’s create an automatic build for our <code class="docutils literal notranslate"><span class="pre">diamond_blast_docker</span></code> using the instructions below.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Hopefully you guys have a working Docker image from the exercies in a github repo,  if you don’t have a <code class="docutils literal notranslate"><span class="pre">diamond_blast_docker</span></code> github repo then fork my <cite>repo &lt;https://github.com/upendrak/diamond_blast_docker&gt;_</cite> :</p>
+</div>
+<a class="reference internal image-reference" href="../_images/diamond_blast_docker.png"><img alt="../_images/diamond_blast_docker.png" src="../_images/diamond_blast_docker.png" style="width: 750px; height: 350px;" /></a>
+<ol class="arabic simple" start="5">
+<li>Select <code class="docutils literal notranslate"><span class="pre">Create</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Automated</span> <span class="pre">Build</span></code> from Docker Hub.</li>
+</ol>
+<a class="reference internal image-reference" href="../_images/auto-0.png"><img alt="../_images/auto-0.png" src="../_images/auto-0.png" style="width: 750px; height: 350px;" /></a>
+<ul class="simple">
+<li>The system prompts you with a list of User/Organizations and code repositories.</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/auto-1.png"><img alt="../_images/auto-1.png" src="../_images/auto-1.png" style="width: 750px; height: 350px;" /></a>
+<ul class="simple">
+<li>For now select your GitHub account from the User/Organizations list on the left. The list of repositories change. If you have a long list of repos, use the filter box above the list to restrict the list. After you select the project, the system displays the Create Automated Build dialog.</li>
+<li>Pick the project to build. In this case <code class="docutils literal notranslate"><span class="pre">diamond_blast_docker</span></code>. Type in “diamondblast” in the Short Description box.</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/auto-2.png"><img alt="../_images/auto-2.png" src="../_images/auto-2.png" style="width: 750px; height: 350px;" /></a>
+<ul class="simple">
+<li>Next click on the <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">Settings</span></code> tab to customize the automated build.</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/auto-4.png"><img alt="../_images/auto-4.png" src="../_images/auto-4.png" style="width: 750px; height: 350px;" /></a>
+<p>Specify which code branches or tags to build from. You can build by a code branch or by an image tag. You can enter a specific value or use a regex to select multiple values. To see examples of regex, press the Show More link on the right of the page.</p>
+<ul class="simple">
+<li>Leave Push Type as Branch as is.</li>
+<li>Leave the Dockerfile location as is.</li>
+<li>Recall the file is in the root of your code repository.</li>
+<li>Specify <code class="docutils literal notranslate"><span class="pre">1.0</span></code> for the Tag Name.</li>
+<li>Press <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> and finally <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">changes</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Docker builds everything listed whenever a push is made to the code repository. If you specify a particular branch or tag, you can manually build that image by pressing the Trigger. If you use a regular expression syntax (regex) to define your build branch or tag, Docker does not give you the option to manually build.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>During the build process, Docker copies the contents of your Dockerfile to Docker Hub. The Docker community (for public repositories) or approved team members/orgs (for private repositories) can then view the Dockerfile on your repository page.</p>
+<p class="last">The build process looks for a README.md in the same directory as your Dockerfile. If you have a README.md file in your repository, it is used in the repository as the full description. If you change the full description after a build, it’s overwritten the next time the Automated Build runs. To make changes, modify the README.md in your Git repository.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You can only trigger one build at a time and no more than one every five minutes. If you already have a build pending, or if you recently submitted a build request, Docker ignores new requests.</p>
+</div>
+<p>It can take a few minutes for your automated build job to be created. When the system is finished, it places you in the detail page for your Automated Build repository.</p>
+<ol class="arabic simple" start="6">
+<li>Review the build results</li>
+</ol>
+<p>The Build Details page shows a log of your build systems:</p>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">Details</span></code> page.</p>
+<p>Wait until your image build is done.</p>
+<p>You may have to manually refresh the page and your build may take several minutes to complete.</p>
+<a class="reference internal image-reference" href="../_images/auto-5.png"><img alt="../_images/auto-5.png" src="../_images/auto-5.png" style="width: 750px; height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/auto-6.png"><img alt="../_images/auto-6.png" src="../_images/auto-6.png" style="width: 750px; height: 350px;" /></a>
+</div>
+</div>
+<div class="section" id="pull-the-image-from-dockerhub-registry">
+<h3>5.1.1 Pull the image from Dockerhub registry<a class="headerlink" href="#pull-the-image-from-dockerhub-registry" title="Permalink to this headline">¶</a></h3>
+<p>You have already seen couple of examples of pulling the image earlier. The basic syntax is <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">&lt;docker</span> <span class="pre">image&gt;</span></code>. We will see more examples of this in the advanced docker session</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dockeradvanced.html" class="btn btn-neutral float-right" title="Advanced Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../getting_started/about_cyverse.html" class="btn btn-neutral" title="About CyVerse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, CyVerse.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/cyverse.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

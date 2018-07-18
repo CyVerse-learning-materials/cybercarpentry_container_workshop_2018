@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Singularity &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Singularity" href="singularityadvanced.html" />
+    <link rel="prev" title="Additional Docker Demo’s" href="../docker/dockerdemos.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/agenda.html"><strong>Agenda</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/about_cyverse.html"><strong>About CyVerse</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerintro.html"><strong>Introduction to Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockeradvanced.html"><strong>Advanced Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerdemos.html"><strong>Additional Docker Demo’s</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Singularity</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Introduction to Singularity</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#singularity-installation">2. Singularity installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-1-15-20-mins">Exercise 1 (15-20 mins)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-your-laptop">2.1 Setting up your Laptop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hpc">2.2 HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xsede-jetstream-cyverse-atmosphere-clouds">2.3 XSEDE Jetstream / CyVerse Atmosphere Clouds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-installation">2.4 Check Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-singularity-containers">3. Downloading Singularity containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-10-mins">Exercise 2 (~10 mins)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pulling-a-container-from-singularity-hub">3.1: Pulling a Container from Singularity Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pulling-containers-from-docker-hub">3.2: Pulling containers from Docker Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keeping-track-of-downloaded-containers">3.3: Keeping track of downloaded containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-singularity-containers">4. Building Singularity containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker2singularity-singularity2docker">4.1: Docker2Singularity &amp; Singularity2Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-30-minutes-create-the-singularity-file">4.2: Exercise 3 (30 minutes): Create the Singularity file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-singularity-containers">5. Running Singularity containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-exec-command">5.1 Using the <cite>exec</cite> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-shell-command">5.2 Using the <cite>shell</cite> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-run-command">5.3 Using the <cite>run</cite> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-inspect-command">5.4 Using the <cite>inspect</cite> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-sandbox-and-writable-commands">5.5 Using the <cite>–sandbox</cite> and <cite>–writable</cite> commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test">5.6 Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bind-paths">5.7 Bind Paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overlay">5.8 Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">6. Singularity-Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="singularityadvanced.html"><strong>Advanced Singularity</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../atmosphere/boot.html"><strong>Booting an Atmosphere computer instance for your use!</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_docker.html"><strong>Docker related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_singularity.html"><strong>Singularity related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_other.html"><strong>Other resources</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cybercarpentry_workshop_2018</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><strong>Introduction to Singularity</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/singularity/singularityintro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-to-singularity">
+<h1><strong>Introduction to Singularity</strong><a class="headerlink" href="#introduction-to-singularity" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../_images/singularity.png"><img alt="singularity" src="../_images/singularity.png" style="width: 200px; height: 200px;" /></a></p>
+<p>This would be the introductory session for concept of Singularity. The topics include installation Singularity on various platforms, running prebuilt singularity containers, building singularity containers locally etc.</p>
+<div class="section" id="prerequisites">
+<h2>1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor. Prior experience developing web applications could be helpful but is not required.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<blockquote>
+<div><em>Important</em>: Docker and Singularity are <a class="reference external" href="http://singularity.lbl.gov/docs-docker">friends</a> but they have distinct differences.</div></blockquote>
+<p>For more information see: <a class="reference external" href="https://cyverse-container-camp-workshop-2018.readthedocs-hosted.com/en/latest/useful_resources/usefulresources_singularity.html">Singularity Related Resources</a></p>
+<blockquote class="last">
+<div><p><strong>Docker</strong>:</p>
+<ul class="simple">
+<li>Inside a Docker container the user has escalated privileges, effectively making them root on the host system. This is not supported by most administrators of High Performance Computing (HPC) centers.</li>
+</ul>
+<p><strong>Singularity</strong>:</p>
+<ul class="simple">
+<li>Works on HPC systems</li>
+<li>Same user inside and outside the container</li>
+<li>User only has root privileges if elevated with <cite>sudo</cite></li>
+<li>Run (and modify!) existing Docker containers</li>
+</ul>
+</div></blockquote>
+</div>
+<p>Singularity uses a ‘flow’ whereby you can (1) create and modify images on your dev system, (2) build containers using recipes or pulling from repositories, and (3) execute containers on production systems.</p>
+<p><a class="reference internal" href="http://singularity.lbl.gov/assets/img/diagram/singularity-2.4-flow.png"><img alt="singularityflow" src="http://singularity.lbl.gov/assets/img/diagram/singularity-2.4-flow.png" style="height: 600px;" /></a></p>
+</div>
+<div class="section" id="singularity-installation">
+<h2>2. Singularity installation<a class="headerlink" href="#singularity-installation" title="Permalink to this headline">¶</a></h2>
+<p>Local installations of Singularity are useful for testing out new containers, before pushing them to Singularity-Hub.</p>
+<p>If you plan to use Singularity on HPC you will need a local installation of Singularity to build your own containers. HPC admins are <em>very</em> unlikely to grant you <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges needed to build your own containers there.</p>
+<div class="section" id="exercise-1-15-20-mins">
+<h3>Exercise 1 (15-20 mins)<a class="headerlink" href="#exercise-1-15-20-mins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="setting-up-your-laptop">
+<h3>2.1 Setting up your Laptop<a class="headerlink" href="#setting-up-your-laptop" title="Permalink to this headline">¶</a></h3>
+<p>To Install Singularity on your laptop or desktop PC follow the instructions from Singularity:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://singularity.lbl.gov/install-windows">Windows</a></li>
+<li><a class="reference external" href="http://singularity.lbl.gov/install-linux">Linux</a></li>
+<li><a class="reference external" href="http://singularity.lbl.gov/install-mac">Mac</a></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">on Mac OS X the dependency <a class="reference external" href="https://app.vagrantup.com/singularityware/boxes/singularity-2.4/versions/2.4">VagrantBox</a> is required to run Singularity</p>
+</div>
+</div>
+<div class="section" id="hpc">
+<h3>2.2 HPC<a class="headerlink" href="#hpc" title="Permalink to this headline">¶</a></h3>
+<p>If you are interested in working on the UA HPC, you can load Singularity as a module. Many HPC systems are running Environment Modules with the simple command <code class="docutils literal notranslate"><span class="pre">module</span></code>. You can check to see what is available on an HPC with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module avail
+</pre></div>
+</div>
+<p>If Singularity is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load singularity
+</pre></div>
+</div>
+<p>If you want to run Singularity on a different HPC, check their documentation. Else, you may need to contact the systems administrator and request they install the latest version of <a class="reference external" href="http://singularity.lbl.gov/install-request">Singularity</a>.</p>
+</div>
+<div class="section" id="xsede-jetstream-cyverse-atmosphere-clouds">
+<h3>2.3 XSEDE Jetstream / CyVerse Atmosphere Clouds<a class="headerlink" href="#xsede-jetstream-cyverse-atmosphere-clouds" title="Permalink to this headline">¶</a></h3>
+<p>CyVerse staff have deployed an Ansible playbooks called <cite>ez</cite> installation which includes <a class="reference external" href="https://cyverse-ez-quickstart.readthedocs-hosted.com/en/latest/#">Singularity</a> that only requires you to type a short line of code.</p>
+<p>Start a featured instance on Atmosphere or Jetstream.</p>
+<p>Type in the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ezs
+
+* Updating ez singularity and installing singularity <span class="o">(</span>this may take a few minutes, coffee break!<span class="o">)</span>
+Cloning into <span class="s1">&#39;/opt/cyverse-ez-singularity&#39;</span>...
+remote: Counting objects: <span class="m">11</span>, <span class="k">done</span>.
+remote: Total <span class="m">11</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">11</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">11</span>/11<span class="o">)</span>, <span class="k">done</span>.
+Checking connectivity... <span class="k">done</span>.
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-installation">
+<h3>2.4 Check Installation<a class="headerlink" href="#check-installation" title="Permalink to this headline">¶</a></h3>
+<p>Singularity should now be installed on your laptop or VM, or loaded on the HPC, you can check the installation with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull shub://vsoch/hello-world
+Progress <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Done. Container is at: /tmp/vsoch-hello-world-master.simg
+
+$ singularity run vsoch-hello-world-master.simg
+RaawwWWWWWRRRR!!
+</pre></div>
+</div>
+<p>View the Singularity help:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity --help
+
+USAGE: singularity [global options...] &lt;command&gt; [command options...] ...
+
+GLOBAL OPTIONS:
+    -d|--debug    Print debugging information
+    -h|--help     Display usage summary
+    -s|--silent   Only print errors
+    -q|--quiet    Suppress all normal output
+       --version  Show application version
+    -v|--verbose  Increase verbosity +1
+    -x|--sh-debug Print shell wrapper debugging information
+
+GENERAL COMMANDS:
+    help       Show additional help for a command or container
+    selftest   Run some self tests for singularity install
+
+CONTAINER USAGE COMMANDS:
+    exec       Execute a command within container
+    run        Launch a runscript within container
+    shell      Run a Bourne shell within container
+    test       Launch a testscript within container
+
+CONTAINER MANAGEMENT COMMANDS:
+    apps       List available apps within a container
+    bootstrap  *Deprecated* use build instead
+    build      Build a new Singularity container
+    check      Perform container lint checks
+    inspect    Display container&#39;s metadata
+    mount      Mount a Singularity container image
+    pull       Pull a Singularity/Docker container to $PWD
+
+COMMAND GROUPS:
+    image      Container image command group
+    instance   Persistent instance command group
+
+
+CONTAINER USAGE OPTIONS:
+    see singularity help &lt;command&gt;
+
+For any additional help or support visit the Singularity
+website: http://singularity.lbl.gov/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="downloading-singularity-containers">
+<h2>3. Downloading Singularity containers<a class="headerlink" href="#downloading-singularity-containers" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to use a Singularity container is to <cite>pull</cite> an existing container from one of the Container Registries maintained by the Singularity group.</p>
+<div class="section" id="exercise-2-10-mins">
+<h3>Exercise 2 (~10 mins)<a class="headerlink" href="#exercise-2-10-mins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pulling-a-container-from-singularity-hub">
+<h3>3.1: Pulling a Container from Singularity Hub<a class="headerlink" href="#pulling-a-container-from-singularity-hub" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <cite>pull</cite> command to download pre-built images from a number of Container Registries, here we’ll be focusing on the <a class="reference external" href="https://www.singularity-hub.org">Singularity-Hub</a> or <a class="reference external" href="https://hub.docker.com/">DockerHub</a>.</p>
+<p>Container Registries:</p>
+<ul class="simple">
+<li><cite>shub</cite> - images hosted on Singularity Hub</li>
+<li><cite>docker</cite> - images hosted on Docker Hub</li>
+<li><cite>localimage</cite> - images saved on your machine</li>
+<li><cite>yum</cite> - yum based systems such as CentOS and Scientific Linux</li>
+<li><cite>debootstrap</cite> - apt based systems such as Debian and Ubuntu</li>
+<li><cite>arch</cite> - Arch Linux</li>
+<li><cite>busybox</cite> - BusyBox</li>
+<li><cite>zypper</cite> - zypper based systems such as Suse and OpenSuse</li>
+</ul>
+<p>In this example I am pulling a base Ubuntu container from Singularity-Hub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull shub://singularityhub/ubuntu
+</pre></div>
+</div>
+<p>You can rename the container using the <cite>–name</cite> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull --name ubuntu_test.simg shub://singularityhub/ubuntu
+</pre></div>
+</div>
+<p>After your image has finished downloading it should be in the present working directory, unless you specified to download it somewhere else.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull --name ubuntu_test.simg shub://singularityhub/ubuntu
+Progress <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Done. Container is at: /home/***/ubuntu_test.simg
+$ singularity run ubuntu_test.simg
+This is what happens when you run the container...
+$ singularity shell ubuntu_test.simg
+Singularity: Invoking an interactive shell within container...
+
+Singularity ubuntu_test.simg:~&gt; cat /etc/*release
+<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
+<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span><span class="m">14</span>.04
+<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>trusty
+<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">&quot;Ubuntu 14.04 LTS&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;14.04, Trusty Tahr&quot;</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu 14.04 LTS&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;14.04&quot;</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;http://www.ubuntu.com/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://help.ubuntu.com/&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://bugs.launchpad.net/ubuntu/&quot;</span>
+Singularity ubuntu_test.simg:~&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="pulling-containers-from-docker-hub">
+<h3>3.2: Pulling containers from Docker Hub<a class="headerlink" href="#pulling-containers-from-docker-hub" title="Permalink to this headline">¶</a></h3>
+<p>This example pulls a container from DockerHub</p>
+<p>Build to your container by pulling an image from Docker:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull docker://ubuntu:16.04
+WARNING: pull <span class="k">for</span> Docker Hub is not guaranteed to produce the
+WARNING: same image on repeated pull. Use Singularity Registry
+WARNING: <span class="o">(</span>shub://<span class="o">)</span> to pull exactly equivalent images.
+Docker image path: index.docker.io/library/ubuntu:16.04
+Cache folder <span class="nb">set</span> to /home/.../.singularity/docker
+<span class="o">[</span><span class="m">5</span>/5<span class="o">]</span> <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Importing: base Singularity environment
+Importing: /home/.../.singularity/docker/sha256:1be7f2b886e89a58e59c4e685fcc5905a26ddef3201f290b96f1eff7d778e122.tar.gz
+Importing: /home/.../.singularity/docker/sha256:6fbc4a21b806838b63b774b338c6ad19d696a9e655f50b4e358cc4006c3baa79.tar.gz
+Importing: /home/.../.singularity/docker/sha256:c71a6f8e13782fed125f2247931c3eb20cc0e6428a5d79edb546f1f1405f0e49.tar.gz
+Importing: /home/.../.singularity/docker/sha256:4be3072e5a37392e32f632bb234c0b461ff5675ab7e362afad6359fbd36884af.tar.gz
+Importing: /home/.../.singularity/docker/sha256:06c6d2f5970057aef3aef6da60f0fde280db1c077f0cd88ca33ec1a70a9c7b58.tar.gz
+Importing: /home/.../.singularity/metadata/sha256:c6a9ef4b9995d615851d7786fbc2fe72f72321bee1a87d66919b881a0336525a.tar.gz
+WARNING: Building container as an unprivileged user. If you run this container as root
+WARNING: it may be missing some functionality.
+Building Singularity image...
+Singularity container built: ./ubuntu-16.04.simg
+Cleaning up...
+Done. Container is at: ./ubuntu-16.04.simg
+</pre></div>
+</div>
+<p>Note, there are some Warning messages concerning the build from Docker.</p>
+<p>The example below does the same as above, but renames the image.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull --name ubuntu_docker.simg docker://ubuntu
+Importing: /home/***/.singularity/docker/sha256:c71a6f8e13782fed125f2247931c3eb20cc0e6428a5d79edb546f1f1405f0e49.tar.gz
+Importing: /home/***/.singularity/docker/sha256:4be3072e5a37392e32f632bb234c0b461ff5675ab7e362afad6359fbd36884af.tar.gz
+Importing: /home/***/.singularity/docker/sha256:06c6d2f5970057aef3aef6da60f0fde280db1c077f0cd88ca33ec1a70a9c7b58.tar.gz
+Importing: /home/***/.singularity/metadata/sha256:c6a9ef4b9995d615851d7786fbc2fe72f72321bee1a87d66919b881a0336525a.tar.gz
+WARNING: Building container as an unprivileged user. If you run this container as root
+WARNING: it may be missing some functionality.
+Building Singularity image...
+Singularity container built: ./ubuntu_docker.simg
+Cleaning up...
+Done. Container is at: ./ubuntu_docker.simg
+</pre></div>
+</div>
+<p>When we run this particular Docker container, without any runtime arguments notice that it does not return any notifications, and the Bash prompt does not change the prompt.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity run ubuntu_docker.simg
+$ cat /etc/*release
+<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
+<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span><span class="m">16</span>.04
+<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.3 LTS&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;16.04.3 LTS (Xenial Xerus)&quot;</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.3 LTS&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;16.04&quot;</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;http://www.ubuntu.com/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://help.ubuntu.com/&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://bugs.launchpad.net/ubuntu/&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>xenial
+</pre></div>
+</div>
+<p>Whoa, we’re inside the container!?! This is the OS on the VM I tested this on:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">exit</span>
+<span class="nb">exit</span>
+$ cat /etc/*release
+<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
+<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span><span class="m">16</span>.04
+<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.1 LTS&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;16.04.1 LTS (Xenial Xerus)&quot;</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.1 LTS&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;16.04&quot;</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;http://www.ubuntu.com/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://help.ubuntu.com/&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://bugs.launchpad.net/ubuntu/&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>xenial
+</pre></div>
+</div>
+<p>By exiting, I can check the OS again to make sure that everything is back. Here we are back in the container using teh <code class="docutils literal notranslate"><span class="pre">shell</span></code> invocation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity shell ubuntu_docker.simg
+Singularity: Invoking an interactive shell within container...
+
+Singularity ubuntu_docker.simg:~&gt; cat /etc/*release
+<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
+<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span><span class="m">16</span>.04
+<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.3 LTS&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;16.04.3 LTS (Xenial Xerus)&quot;</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Ubuntu 16.04.3 LTS&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;16.04&quot;</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;http://www.ubuntu.com/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://help.ubuntu.com/&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://bugs.launchpad.net/ubuntu/&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>xenial
+Singularity ubuntu_docker.simg:~&gt;
+</pre></div>
+</div>
+<p>When starting a container, make sure that it notifies you it is running. This is typically achieved by the basic <code class="docutils literal notranslate"><span class="pre">$</span></code> prompt providing some metadata:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Singularity ubuntu_docker.simg:~&gt;
+</pre></div>
+</div>
+<p>Keeping track of downloaded images may be necessary if space is a concern.</p>
+</div>
+<div class="section" id="keeping-track-of-downloaded-containers">
+<h3>3.3: Keeping track of downloaded containers<a class="headerlink" href="#keeping-track-of-downloaded-containers" title="Permalink to this headline">¶</a></h3>
+<p>By default, Singularity uses a temporary cache to hold Docker tarballs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls ~/.singularity
+</pre></div>
+</div>
+<p>You can change these by specifying the location of the cache and temporary directory on your localhost:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir tmp
+$ sudo mkdir scratch
+
+$ <span class="nv">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="nv">$PWD</span>/scratch <span class="nv">SINGULARITY_CACHEDIR</span><span class="o">=</span><span class="nv">$PWD</span>/tmp singularity --debug pull --name ubuntu-tmpdir.simg docker://ubuntu
+</pre></div>
+</div>
+<p>As an example, using Singularity we can run a UI program that was built from Docker, here I show the IDE RStudio <cite>tidyverse</cite> from <a class="reference external" href="https://hub.docker.com/r/rocker/rstudio/">Rocker</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity <span class="nb">exec</span> docker://rocker/tidyverse:latest R
+</pre></div>
+</div>
+<p><a class="reference external" href="https://journal.r-project.org/archive/2017/RJ-2017-065/RJ-2017-065.pdf">“An Introduction to Rocker: Docker Containers for R by Carl Boettiger, Dirk Eddelbuettel”</a></p>
+</div>
+</div>
+<div class="section" id="building-singularity-containers">
+<h2>4. Building Singularity containers<a class="headerlink" href="#building-singularity-containers" title="Permalink to this headline">¶</a></h2>
+<p>Like Docker, which uses a <cite>dockerfile</cite> to build its containers, Singularity uses a file called <cite>Singularity</cite></p>
+<p>When you are building locally, you can name this file whatever you wish, but a better practice is to put it in a directory and name it <cite>Singularity</cite> - as this will help later on when developing on Singularity-Hub and Github.</p>
+<p>Create Container and add content to it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity image.create ubuntu14.simg
+Creating empty 768MiB image file: ubuntu14.simg
+Formatting image with ext3 file system
+Image is <span class="k">done</span>: ubuntu14.simg
+
+$ singularity build ubuntu14.simg docker://ubuntu:14.04
+Building into existing container: ubuntu14.simg
+Docker image path: index.docker.io/library/ubuntu:14.04
+Cache folder <span class="nb">set</span> to /home/.../.singularity/docker
+<span class="o">[</span><span class="m">5</span>/5<span class="o">]</span> <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Importing: base Singularity environment
+Importing: /home/.../.singularity/docker/sha256:c954d15f947c57e059f67a156ff2e4c36f4f3e59b37467ff865214a88ebc54d6.tar.gz
+Importing: /home/.../.singularity/docker/sha256:c3688624ef2b94ab3981564e23e1f48df8f1b988519373ccfb79d7974017cb85.tar.gz
+Importing: /home/.../.singularity/docker/sha256:848fe4263b3b44987f0eacdb2fc0469ae6ff04b2311e759985dfd27ae5d3641d.tar.gz
+Importing: /home/.../.singularity/docker/sha256:23b4459d3b04aa0bc7cb7f7021e4d7bbb5e87aa74a6a5f57475a0e8badbd9a26.tar.gz
+Importing: /home/.../.singularity/docker/sha256:36ab3b56c8f1a3188464886cbe41f42a969e6f9374e040f13803d796ed27b0ec.tar.gz
+Importing: /home/.../.singularity/metadata/sha256:c6a9ef4b9995d615851d7786fbc2fe72f72321bee1a87d66919b881a0336525a.tar.gz
+WARNING: Building container as an unprivileged user. If you run this container as root
+WARNING: it may be missing some functionality.
+Building Singularity image...
+Singularity container built: ubuntu14.simg
+Cleaning up...
+</pre></div>
+</div>
+<p>Note, <cite>image.create</cite> uses an ext3 file system</p>
+<p>Create a container using a custom Singularity file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity build --name ubuntu.simg Singularity
+</pre></div>
+</div>
+<p>In the above command:</p>
+<ul class="simple">
+<li><cite>–name</cite> will create a container named  <cite>ubuntu.simg</cite></li>
+</ul>
+<p>Pull a Container from Docker and make it writable using the <cite>–writable</cite> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo singularity build --writable ubuntu.simg  docker://ubuntu
+
+Docker image path: index.docker.io/library/ubuntu:latest
+Cache folder <span class="nb">set</span> to /root/.singularity/docker
+Importing: base Singularity environment
+Importing: /root/.singularity/docker/sha256:1be7f2b886e89a58e59c4e685fcc5905a26ddef3201f290b96f1eff7d778e122.tar.gz
+Importing: /root/.singularity/docker/sha256:6fbc4a21b806838b63b774b338c6ad19d696a9e655f50b4e358cc4006c3baa79.tar.gz
+Importing: /root/.singularity/docker/sha256:c71a6f8e13782fed125f2247931c3eb20cc0e6428a5d79edb546f1f1405f0e49.tar.gz
+Importing: /root/.singularity/docker/sha256:4be3072e5a37392e32f632bb234c0b461ff5675ab7e362afad6359fbd36884af.tar.gz
+Importing: /root/.singularity/docker/sha256:06c6d2f5970057aef3aef6da60f0fde280db1c077f0cd88ca33ec1a70a9c7b58.tar.gz
+Importing: /root/.singularity/metadata/sha256:c6a9ef4b9995d615851d7786fbc2fe72f72321bee1a87d66919b881a0336525a.tar.gz
+Creating empty Singularity writable container 120MB
+Creating empty 150MiB image file: ubuntu.simg
+Formatting image with ext3 file system
+Image is <span class="k">done</span>: ubuntu.simg
+Building Singularity image...
+Singularity container built: ubuntu.simg
+Cleaning up...
+
+$ singularity shell ubuntu.simg
+
+Singularity: Invoking an interactive shell within container...
+
+Singularity ubuntu.simg:~&gt; apt-get update
+
+Reading package lists... Done
+W: chmod <span class="m">0700</span> of directory /var/lib/apt/lists/partial failed - SetupAPTPartialDirectory <span class="o">(</span><span class="m">1</span>: Operation not permitted<span class="o">)</span>
+E: Could not open lock file /var/lib/apt/lists/lock - open <span class="o">(</span><span class="m">13</span>: Permission denied<span class="o">)</span>
+E: Unable to lock directory /var/lib/apt/lists/
+Singularity ubuntu.simg:~&gt; <span class="nb">exit</span>
+<span class="nb">exit</span>
+
+$ sudo singularity shell ubuntu.simg
+
+Singularity: Invoking an interactive shell within container...
+
+Singularity ubuntu.simg:~&gt; apt-get update
+
+Hit:1 http://archive.ubuntu.com/ubuntu xenial InRelease
+Get:2 http://security.ubuntu.com/ubuntu xenial-security InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>
+Get:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>
+Get:5 http://security.ubuntu.com/ubuntu xenial-security/universe Sources <span class="o">[</span><span class="m">73</span>.2 kB<span class="o">]</span>
+Get:6 http://archive.ubuntu.com/ubuntu xenial/universe Sources <span class="o">[</span><span class="m">9802</span> kB<span class="o">]</span>
+Get:7 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages <span class="o">[</span><span class="m">585</span> kB<span class="o">]</span>
+Get:8 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages <span class="o">[</span><span class="m">405</span> kB<span class="o">]</span>
+Get:9 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages <span class="o">[</span><span class="m">3486</span> B<span class="o">]</span>
+Get:10 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages <span class="o">[</span><span class="m">9827</span> kB<span class="o">]</span>
+Get:11 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages <span class="o">[</span><span class="m">176</span> kB<span class="o">]</span>
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources <span class="o">[</span><span class="m">241</span> kB<span class="o">]</span>
+Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages <span class="o">[</span><span class="m">953</span> kB<span class="o">]</span>
+Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages <span class="o">[</span><span class="m">13</span>.1 kB<span class="o">]</span>
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages <span class="o">[</span><span class="m">762</span> kB<span class="o">]</span>
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages <span class="o">[</span><span class="m">18</span>.5 kB<span class="o">]</span>
+Get:17 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages <span class="o">[</span><span class="m">5153</span> B<span class="o">]</span>
+Get:18 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages <span class="o">[</span><span class="m">7168</span> B<span class="o">]</span>
+Fetched <span class="m">23</span>.2 MB in 4s <span class="o">(</span><span class="m">5569</span> kB/s<span class="o">)</span>
+Reading package lists... Done
+
+Singularity ubuntu.simg:~&gt; apt-get install curl --fix-missing
+</pre></div>
+</div>
+<p>When I try to install software to the image without <cite>sudo</cite> it is denied, because root is the owner of the container. When I use <cite>sudo</cite> I can install software to the container. The software remain in the container after closing the container and restart.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Bootstrapping <cite>bootstrap</cite> command is deprecated (v2.4), use <cite>build</cite> instead.</p>
+<p class="last">To install a container with Ubuntu from the ubuntu.com reposutiry you need to use <cite>debootstrap</cite></p>
+</div>
+<div class="section" id="docker2singularity-singularity2docker">
+<h3>4.1: Docker2Singularity &amp; Singularity2Docker<a class="headerlink" href="#docker2singularity-singularity2docker" title="Permalink to this headline">¶</a></h3>
+<p>One of the other features of Singularity is the ability to convert <a class="reference external" href="https://github.com/singularityware/docker2singularity">Docker containers to Singularity Containers</a>, and <a class="reference external" href="https://github.com/vsoch/singularity2docker">Singularity containers to Docker containers</a></p>
+</div>
+<div class="section" id="exercise-3-30-minutes-create-the-singularity-file">
+<h3>4.2: Exercise 3 (30 minutes): Create the Singularity file<a class="headerlink" href="#exercise-3-30-minutes-create-the-singularity-file" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://singularity.lbl.gov/docs-recipes">Recipes</a> can use any number of container registries for bootstrapping a container.</p>
+<p>(Advanced) the <cite>Singularity</cite> file can be hosted on Github and will be auto-detected by Singularity-Hub when you set up your Container Collection.</p>
+<p>Building your own containers requires that you have <cite>sudo</cite> privileges - therefore you’ll need to develop these on your local machine or on a VM that you can gain root access on.</p>
+<ul class="simple">
+<li>The Header</li>
+</ul>
+<p>The top of the file, selects the base OS for the container. <cite>Bootstrap:</cite> references the repository (e.g. <cite>docker</cite>, <cite>debootstrap</cite>, <cite>sub</cite>). <cite>From:</cite> selects the name of the owner/container.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: shub
+From: vsoch/hello-world
+</pre></div>
+</div>
+<p>Using <cite>debootstrap</cite> with a build that uses a mirror:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+</pre></div>
+</div>
+<p>Using a <cite>localimage</cite> to build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: localimage
+From: /path/to/container/file/or/directory
+</pre></div>
+</div>
+<p>Using CentOS-like container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: yum
+OSVersion: <span class="m">7</span>
+MirrorURL: http://mirror.centos.org/centos-7/7/os/x86_64/
+Include:yum
+</pre></div>
+</div>
+<p>Note: to use <cite>yum</cite> to build a container you should be operating on a RHEL system, or an Ubuntu system with <cite>yum</cite> installed.</p>
+<p>The container registries which Singularity uses are listed above in Section 3.1.</p>
+<ul class="simple">
+<li>The Singularity file uses sections to specify the dependencies, environmental settings, and runscripts when it build.</li>
+</ul>
+<ul class="simple">
+<li>%help - create text for a help menu associated with your container</li>
+<li>%setup - executed on the host system outside of the container, after the base OS has been installed.</li>
+<li>%files - copy files from your host system into the container</li>
+<li>%labels - store metadata in the container</li>
+<li>%environment - loads environment variables at the time the container is run (not built)</li>
+<li>%post - set environment variables during the build</li>
+<li>%runscript - executes a script when the container runs</li>
+<li>%test - runs a test on the build of the container</li>
+</ul>
+<ul class="simple">
+<li>Apps</li>
+</ul>
+<p>In Singularity 2.4+ we can build a container which does multiple things, e.g. each app has its own runscripts. These use the prefix <cite>%app</cite> before the sections mentioned above. The <cite>%app</cite> architecture can exist in addition to the regular <cite>%post</cite> and <cite>%runscript</cite> sections.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: docker
+From: ubuntu
+
+% environment
+
+%labels
+
+<span class="c1">##############################</span>
+<span class="c1"># foo</span>
+<span class="c1">##############################</span>
+
+%apprun foo
+    <span class="nb">exec</span> <span class="nb">echo</span> <span class="s2">&quot;RUNNING FOO&quot;</span>
+
+%applabels foo
+    <span class="nv">BESTAPP</span><span class="o">=</span>FOO
+    <span class="nb">export</span> BESTAPP
+
+%appinstall foo
+    touch foo.exec
+
+%appenv foo
+    <span class="nv">SOFTWARE</span><span class="o">=</span>foo
+    <span class="nb">export</span> SOFTWARE
+
+%apphelp foo
+    This is the <span class="nb">help</span> <span class="k">for</span> foo.
+
+%appfiles foo
+    avocados.txt
+
+
+<span class="c1">##############################</span>
+<span class="c1"># bar</span>
+<span class="c1">##############################</span>
+
+%apphelp bar
+    This is the <span class="nb">help</span> <span class="k">for</span> bar.
+
+%applabels bar
+    <span class="nv">BESTAPP</span><span class="o">=</span>BAR
+    <span class="nb">export</span> BESTAPP
+
+%appinstall bar
+    touch bar.exec
+
+%appenv bar
+    <span class="nv">SOFTWARE</span><span class="o">=</span>bar
+    <span class="nb">export</span> SOFTWARE
+</pre></div>
+</div>
+<ul class="simple">
+<li>Setting up Singularity file system</li>
+</ul>
+<p><cite>%help</cite> section can be as verbose as you want</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Bootstrap: docker
+From: ubuntu
+
+%help
+This is the container <span class="nb">help</span> section.
+</pre></div>
+</div>
+<p><cite>%setup</cite> commands are executed on the localhost system outside of the container - these files could include necessary build dependencies. We can copy files to the <cite>$SINGULARITY_ROOTFS</cite> file system can be done during <cite>%setup</cite></p>
+<p><cite>%files</cite> include any files that you want to copy from your localhost into the container.</p>
+<p><cite>%post</cite> includes all of the environment variables and dependencies that you want to see installed into the container at build time.</p>
+<p><cite>%environment</cite> includes the environment variables which we want to be run when we start the container</p>
+<p><cite>%runscript</cite> does what it says, it executes a set of commands when the container is run.</p>
+<p>Example Singularity file bootstrapping a <a class="reference external" href="https://hub.docker.com/_/ubuntu/">Docker</a> Ubuntu (16.04) image.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BootStrap: docker
+From: ubuntu:16.04
+
+%post
+    apt-get -y update
+    apt-get -y install fortune cowsay lolcat
+
+    <span class="c1"># create bind points for additional storage</span>
+    mkdir /scratch
+
+%environment
+    <span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>C
+    <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/games:<span class="nv">$PATH</span>
+
+%runscript
+    fortune <span class="p">|</span> cowsay <span class="p">|</span> lolcat
+
+%labels
+    Maintainer Tyson Swetnam
+    Version v0.1
+</pre></div>
+</div>
+<p>Build the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity build --name cowsay_container.simg Singularity
+</pre></div>
+</div>
+<p>Run the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity run cowsay.simg
+</pre></div>
+</div>
+<p>If you build a <cite>squashfs</cite> container, it is immutable (you cannot <cite>–writable</cite> edit it)</p>
+</div>
+</div>
+<div class="section" id="running-singularity-containers">
+<h2>5. Running Singularity containers<a class="headerlink" href="#running-singularity-containers" title="Permalink to this headline">¶</a></h2>
+<p>Commands:</p>
+<p><cite>exec</cite> - command allows you to execute a custom command within a container by specifying the image file.</p>
+<p><cite>shell</cite> - command allows you to spawn a new shell within your container and interact with it.</p>
+<p><cite>run</cite> - assumes your container is set up with “runscripts” triggered with the <cite>run</cite> command, or simply by calling the container as though it were an executable.</p>
+<p><cite>inspect</cite> - inspects the container.</p>
+<p><cite>–writable</cite> - creates a writable container that you can edit interactively and save on exit.</p>
+<p><cite>–sandbox</cite> - copies the guts of the container into a directory structure.</p>
+<div class="section" id="using-the-exec-command">
+<h3>5.1 Using the <cite>exec</cite> command<a class="headerlink" href="#using-the-exec-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity <span class="nb">exec</span> shub://singularityhub/ubuntu cat /etc/os-release
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-shell-command">
+<h3>5.2 Using the <cite>shell</cite> command<a class="headerlink" href="#using-the-shell-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity shell shub://singularityhub/ubuntu
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-run-command">
+<h3>5.3 Using the <cite>run</cite> command<a class="headerlink" href="#using-the-run-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity run shub://singularityhub/ubuntu
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-inspect-command">
+<h3>5.4 Using the <cite>inspect</cite> command<a class="headerlink" href="#using-the-inspect-command" title="Permalink to this headline">¶</a></h3>
+<p>You can inspect the build of your container using the <cite>inspect</cite> command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity pull  shub://vsoch/hello-world
+Progress <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Done. Container is at: /home/***/vsoch-hello-world-master-latest.simg
+
+$ singularity inspect vsoch-hello-world-master-latest.simg
+<span class="o">{</span>
+    <span class="s2">&quot;org.label-schema.usage.singularity.deffile.bootstrap&quot;</span>: <span class="s2">&quot;docker&quot;</span>,
+    <span class="s2">&quot;MAINTAINER&quot;</span>: <span class="s2">&quot;vanessasaur&quot;</span>,
+    <span class="s2">&quot;org.label-schema.usage.singularity.deffile&quot;</span>: <span class="s2">&quot;Singularity&quot;</span>,
+    <span class="s2">&quot;org.label-schema.schema-version&quot;</span>: <span class="s2">&quot;1.0&quot;</span>,
+    <span class="s2">&quot;WHATAMI&quot;</span>: <span class="s2">&quot;dinosaur&quot;</span>,
+    <span class="s2">&quot;org.label-schema.usage.singularity.deffile.from&quot;</span>: <span class="s2">&quot;ubuntu:14.04&quot;</span>,
+    <span class="s2">&quot;org.label-schema.build-date&quot;</span>: <span class="s2">&quot;2017-10-15T12:52:56+00:00&quot;</span>,
+    <span class="s2">&quot;org.label-schema.usage.singularity.version&quot;</span>: <span class="s2">&quot;2.4-feature-squashbuild-secbuild.g780c84d&quot;</span>,
+    <span class="s2">&quot;org.label-schema.build-size&quot;</span>: <span class="s2">&quot;333MB&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-sandbox-and-writable-commands">
+<h3>5.5 Using the <cite>–sandbox</cite> and <cite>–writable</cite> commands<a class="headerlink" href="#using-the-sandbox-and-writable-commands" title="Permalink to this headline">¶</a></h3>
+<p>As of Singularity v2.4 by default <cite>build</cite> produces immutable images in the ‘squashfs’ file format. This ensures reproducible and verifiable images.</p>
+<p>Creating a <cite>–writable</cite> image must use the <cite>sudo</cite> command, thus the owner of the container is <cite>root</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo singularity build --writable ubuntu-master.simg shub://singularityhub/ubuntu
+Cache folder <span class="nb">set</span> to /root/.singularity/shub
+Progress <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Building from <span class="nb">local</span> image: /root/.singularity/shub/singularityhub-ubuntu-master-latest.simg
+Creating empty Singularity writable container 208MB
+Creating empty 260MiB image file: ubuntu-master.simg
+Formatting image with ext3 file system
+Image is <span class="k">done</span>: ubuntu-master.simg
+Building Singularity image...
+Singularity container built: ubuntu-master.simg
+Cleaning up...
+</pre></div>
+</div>
+<p>You can convert these images to writable versions using the <cite>–writable</cite> and <cite>–sandbox</cite> commands.</p>
+<p>When you use the <cite>–sandbox</cite> the container is written into a directory structure. Sandbox folders can be created without the <cite>sudo</cite> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity build --sandbox lolcow/ shub://GodloveD/lolcow
+WARNING: Building sandbox as non-root may result in wrong file permissions
+Cache folder <span class="nb">set</span> to /home/.../.singularity/shub
+Progress <span class="p">|</span><span class="o">===================================</span><span class="p">|</span> <span class="m">100</span>.0%
+Building from <span class="nb">local</span> image: /home/.../.singularity/shub/GodloveD-lolcow-master-latest.simg
+WARNING: Building container as an unprivileged user. If you run this container as root
+WARNING: it may be missing some functionality.
+Singularity container built: lolcow/
+Cleaning up...
+@vm142-73:~$ <span class="nb">cd</span> lolcow/
+@vm142-73:~/lolcow$ ls
+bin  boot  dev  environment  etc  home  lib  lib64  media  mnt  opt  proc  run  sbin  singularity  srv  sys  tmp  usr  var
+</pre></div>
+</div>
+</div>
+<div class="section" id="test">
+<h3>5.6 Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
+<p>Singularity can test the build of your container.</p>
+<p>You can bypass the test by using <cite>–no-test</cite>.</p>
+</div>
+<div class="section" id="bind-paths">
+<h3>5.7 Bind Paths<a class="headerlink" href="#bind-paths" title="Permalink to this headline">¶</a></h3>
+<p>When Singularity creates the new file system inside a container it ignores directories that are not part of the standard kernel, e.g. <cite>/scratch</cite>, <cite>/xdisk</cite>, <cite>/global</cite>, etc. These paths can be added back into the container by binding them when the container is run.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity shell --bind /xdisk ubuntu14.simg
+</pre></div>
+</div>
+<p>The system administrator can also define what is added to a container. This is important on campus HPC systems that often have a <cite>/scratch</cite> or <cite>/xdisk</cite> directory structure. By editing the <cite>/etc/singularity/singularity.conf</cite> a new path can be added to the system containers.</p>
+</div>
+<div class="section" id="overlay">
+<h3>5.8 Overlay<a class="headerlink" href="#overlay" title="Permalink to this headline">¶</a></h3>
+<p>You can make changes to an immutable container which only persist for the duration of the container being run.</p>
+<p>First, download a container.</p>
+<p>Next, create a new image in the ext3 format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ singularity image.create blank_slate.simg
+</pre></div>
+</div>
+<p>Now, overlay your blank image file name with the container you just downloaded.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo singularity shell --overlay blank_slate.simg ubuntu14.simg
+</pre></div>
+</div>
+<p><em>note: using the `sudo` command to make the container writable</em></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>6. Singularity-Hub<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>You can host containers on Singularity’s own container registry <a class="reference external" href="https://singularity-hub.org">Singularity-Hub</a></p>
+<p>Connect a GitHub repo to the Hub which contains a <code class="docutils literal notranslate"><span class="pre">Singularity</span></code> file. The image will be built automatically and be hosted on the Hub.</p>
+<p>You can pull your built images from the <code class="docutils literal notranslate"><span class="pre">shub://</span></code> followed by your Github user identity and repo name.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="singularityadvanced.html" class="btn btn-neutral float-right" title="Advanced Singularity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../docker/dockerdemos.html" class="btn btn-neutral" title="Additional Docker Demo’s" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, CyVerse.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/cyverse.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Booting an Atmosphere computer instance for your use! &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Docker related resources" href="../useful_resources/usefulresources_docker.html" />
+    <link rel="prev" title="Advanced Singularity" href="../singularity/singularityadvanced.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/agenda.html"><strong>Agenda</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/about_cyverse.html"><strong>About CyVerse</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerintro.html"><strong>Introduction to Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockeradvanced.html"><strong>Advanced Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerdemos.html"><strong>Additional Docker Demo’s</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Singularity</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityintro.html"><strong>Introduction to Singularity</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singularity/singularityadvanced.html"><strong>Advanced Singularity</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Booting an Atmosphere computer instance for your use!</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_docker.html"><strong>Docker related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_singularity.html"><strong>Singularity related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_other.html"><strong>Other resources</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cybercarpentry_workshop_2018</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><strong>Booting an Atmosphere computer instance for your use!</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atmosphere/boot.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="booting-an-atmosphere-computer-instance-for-your-use">
+<h1><strong>Booting an Atmosphere computer instance for your use!</strong><a class="headerlink" href="#booting-an-atmosphere-computer-instance-for-your-use" title="Permalink to this headline">¶</a></h1>
+<p>What we’re going to walk through how to start up a running computer (an “instance”) on the CyVerse Atmosphere Cloud service.</p>
+<p>Below, we’ve provided screenshots of the whole process. You can click on them to zoom in. The important areas to fill in are highlighted.</p>
+<p>First, go to the <a class="reference external" href="https://atmo.cyverse.org/application/images">Atmosphere</a> application and then click <cite>login</cite></p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">As descrbied in the <a class="reference external" href="../getting_started/installation.html">pre-workshop setup</a>, you need to have access to the CyVerse Atmosphere Cloud. If you are not able to log-in for some reason, please let us know and we will fix it immediately.</p>
+</div>
+<ol class="arabic simple">
+<li>Fill in the username and password and click “LOGIN”</li>
+</ol>
+<ul class="simple">
+<li>Fill in the username, which is your CyVerse username, and then enter the password (which is your CyVerse password).</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo-1.png"><img alt="atmo-1" src="../_images/atmo-1.png" style="width: 750px; height: 648px;" /></a></p>
+<ol class="arabic simple" start="2">
+<li>Select the “Projects” tab and then click the “CREATE NEW PROJECT” button</li>
+</ol>
+<ul class="simple">
+<li>This is something you only need to do once.</li>
+<li>A project is a workspace that lets you keep things together.</li>
+<li>Click on the “Projects” tab on the top and then click the “CREATE NEW PROJECT” button</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo_cp0.png"><img alt="atmo_cp0" src="../_images/atmo_cp0.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>Enter the name “Astrocontainers” into the Project Name and put something simple like “CyVerse AstroContainers Workshop, May 2018” into the description. Then click “CREATE”.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo_cp.png"><img alt="atmo_cp" src="../_images/atmo_cp.png" style="width: 750px; height: 648px;" /></a></p>
+<ol class="arabic simple" start="3">
+<li>Select the newly created project</li>
+</ol>
+<ul class="simple">
+<li>Click on your newly created project.</li>
+<li>Click “NEW” and then “Instance” from the dropdown menu to start up a new virtual machine.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo_launch0.png"><img alt="atmo_launch0" src="../_images/atmo_launch0.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>Search for “docker” in the “Show All” tab; click the “Ubuntu 14_04 w Docker CE” image.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo_launch1.png"><img alt="atmo_launch1" src="../_images/atmo_launch1.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>Name your virtual machine something simple such as “tutorial” and select an appropriate instance size, such as “medium3 (CPU: 4, Mem: 32GB, Disk: 240GB)”.</li>
+<li>Leave rest of the fields as default.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo_launch.png"><img alt="atmo_launch" src="../_images/atmo_launch.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>Wait for it to become active</li>
+<li>It will now be booting up! This will take 2-10 minutes. Just wait! Don’t reload or do anything.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo-6.png"><img alt="atmo-6" src="../_images/atmo-6.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>One the virtual machine is ready, the “Status” column will turn green and described as “Active”.</li>
+<li>Click on your new instance’s name to get more information!</li>
+<li>Now, you can either click “Open Web Shell”, <em>or</em>, if you know how to use ssh, you can ssh in with your CyVerse username on the IP address of the machine</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo-7.png"><img alt="atmo-7" src="../_images/atmo-7.png" style="width: 750px; height: 648px;" /></a></p>
+<ol class="arabic simple" start="4">
+<li><strong>Deleting your instance</strong></li>
+</ol>
+<ul class="simple">
+<li>To completely remove your instance, you can select the “Delete” button from the instance details page.</li>
+<li>This will open up a dialogue window. Select the “Yes, delete this instance” button.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo-8.png"><img alt="atmo-8" src="../_images/atmo-8.png" style="width: 750px; height: 648px;" /></a></p>
+<ul class="simple">
+<li>It may take Atmosphere a few minutes to process your request. The instance should disappear from the project when it has been successfully deleted.</li>
+</ul>
+<p><a class="reference internal" href="../_images/atmo-9.png"><img alt="atmo-9" src="../_images/atmo-9.png" style="width: 750px; height: 648px;" /></a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is advisable to delete the machine if you are not planning to use it in future to save valuable resources. However if you want to use it in future, you can suspend it.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../useful_resources/usefulresources_docker.html" class="btn btn-neutral float-right" title="Docker related resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../singularity/singularityadvanced.html" class="btn btn-neutral" title="Advanced Singularity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, CyVerse.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/cyverse.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

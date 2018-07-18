@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Singularity &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Booting an Atmosphere computer instance for your use!" href="../atmosphere/boot.html" />
+    <link rel="prev" title="Introduction to Singularity" href="singularityintro.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/agenda.html"><strong>Agenda</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/about_cyverse.html"><strong>About CyVerse</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerintro.html"><strong>Introduction to Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockeradvanced.html"><strong>Advanced Docker</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/dockerdemos.html"><strong>Additional Docker Demo’s</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Singularity</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="singularityintro.html"><strong>Introduction to Singularity</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Advanced Singularity</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-hpc-environments">1. Using HPC Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-hpc-systems-fit-into-the-development-workflow">How do HPC systems fit into the development workflow?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial-1">Tutorial #1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#singularity-and-mpi">2. Singularity and MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#singularity-and-gpu-computing">3. Singularity and GPU Computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial-2">Tutorial #2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial-3">Tutorial #3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Useful Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../atmosphere/boot.html"><strong>Booting an Atmosphere computer instance for your use!</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_docker.html"><strong>Docker related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_singularity.html"><strong>Singularity related resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_resources/usefulresources_other.html"><strong>Other resources</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cybercarpentry_workshop_2018</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><strong>Advanced Singularity</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/singularity/singularityadvanced.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-singularity">
+<h1><strong>Advanced Singularity</strong><a class="headerlink" href="#advanced-singularity" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../_images/singularity.png"><img alt="singularity" src="../_images/singularity.png" style="width: 200px; height: 200px;" /></a></p>
+<p>This is the advanced session for the concept of Singularity. The topics include pushing and pulling Singularity images to and from Singularity hub, converting Docker containers to Singularity containers, mounting data on to Singularity containers etc.</p>
+<div class="section" id="using-hpc-environments">
+<h2>1. Using HPC Environments<a class="headerlink" href="#using-hpc-environments" title="Permalink to this headline">¶</a></h2>
+<p>Conducting analyses on high performance computing clusters happens through very different patterns of interaction than running analyses on a VM.  When you login, you are on a node that is shared with lots of people.  Trying to run jobs on that node is not “high performance” at all.  Those login nodes are just intended to be used for moving files, editing files, and launching jobs.</p>
+<p>Most jobs on an HPC cluster are neither interactive, nor realtime.  When you submit a job to the scheduler, you must tell it what resources you need (e.g. how many nodes, what type of nodes) and what you want to run.  Then the scheduler finds resources matching your requirements, and runs the job for you when it can.</p>
+<p>You can run a simple command on the login node as opposed to a large job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load singularity
+singularity <span class="nb">exec</span> docker://python:latest python --version
+</pre></div>
+</div>
+<p>The “User’s Guide” for Ocelote can be found at: <a class="reference external" href="https://docs.hpc.arizona.edu">https://docs.hpc.arizona.edu</a></p>
+<div class="section" id="how-do-hpc-systems-fit-into-the-development-workflow">
+<h3>How do HPC systems fit into the development workflow?<a class="headerlink" href="#how-do-hpc-systems-fit-into-the-development-workflow" title="Permalink to this headline">¶</a></h3>
+<p>A few things to consider when using HPC systems:</p>
+<ol class="arabic simple">
+<li>Using ‘sudo’ is not allowed on HPC systems, and building a Singularity container from scratch requires sudo.  That means you have to build your containers on a different development system.  You can pull a docker image on HPC systems.</li>
+<li>If you need to edit text files, command line text editors don’t support using a mouse, so working efficiently has a learning curve.  There are text editors that support editing files over SSH.  This lets you use a local text editor and just save the changes to the HPC system.</li>
+<li>Singularity has changed image formats.  Depending on the version of Singularity running on the HPC system, new squashFS or .simg formats may not work. The images take a lot less space</li>
+<li>You can’t run Docker containers - security stuff!</li>
+</ol>
+</div>
+<div class="section" id="tutorial-1">
+<h3>Tutorial #1<a class="headerlink" href="#tutorial-1" title="Permalink to this headline">¶</a></h3>
+<p>This is a review of knowledge already covered in this workshop. This is optional.  If you create this container, it will have to be where you have root authority.  Or, at the point where this container is transferred to HPC, you can use one you have created previously.</p>
+<ol class="arabic simple">
+<li>Build this where you have root authority</li>
+<li>Some packages are more complex than “pip install numpy”</li>
+<li>Include your bind points</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BootStrap: yum
+OSVersion: <span class="m">7</span>
+MirrorURL: http://mirror.centos.org/centos-%<span class="o">{</span>OSVERSION<span class="o">}</span>/%<span class="o">{</span>OSVERSION<span class="o">}</span>/os/<span class="nv">$basearch</span>/
+Include: yum wget
+<span class="c1"># best to build up container using kickstart mentality.</span>
+<span class="c1"># ie, to add more packages to image,</span>
+<span class="c1"># re-run bootstrap command again.</span>
+<span class="c1"># bootstrap on existing image will build on top of it, not overwriting it/restarting from scratch</span>
+<span class="c1"># singularity .def file is like kickstart file</span>
+<span class="c1"># unix commands can be run, but if there is any error, the bootstrap process ends</span>
+%setup
+ <span class="c1"># commands to be executed on host outside container during bootstrap</span>
+%post
+  <span class="c1"># commands to be executed inside container during bootstrap</span>
+  <span class="c1"># add python and install some packages</span>
+  yum -y install vim wget python epel-release
+  yum -y install python-pip
+   <span class="c1"># install tensorflow</span>
+  pip install --upgrade pip
+  pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl
+  pip install --upgrade numpy scipy astropy
+   <span class="c1"># create bind points for storage.</span>
+   mkdir /extra
+   mkdir /xdisk
+   <span class="nb">exit</span> <span class="m">0</span>
+%runscript
+ <span class="c1"># commands to be executed when the container runs</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Arguments received: </span><span class="nv">$*</span><span class="s2">&quot;</span>
+ <span class="nb">exec</span> /usr/bin/python <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+%test
+ <span class="c1"># commands to be executed within container at close of bootstrap process</span>
+</pre></div>
+</div>
+<p>Create container</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity build astropy.img astropy.recipe
+</pre></div>
+</div>
+<p>The next step is to copy this singularity to one of your directories on Ocelote. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp astropy.img chrisreidy@filexfer.hpc.arizona.edu:
+</pre></div>
+</div>
+<p>Log into home directory on Ocelote then “mv” file to /extra/chrisreidy/singularity
+Test with these commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load singularity
+$ singularity <span class="nb">exec</span> astropy.img python --version
+Python <span class="m">2</span>.7.5
+</pre></div>
+</div>
+<p>On an HPC system, your job submission script would look something like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">###========================================</span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#PBS -N singularity-job</span>
+<span class="c1">#PBS -W group_list=GroupName</span>
+<span class="c1">#PBS -q standard</span>
+<span class="c1">#PBS -l select=1:ncpus=1:mem=6gb</span>
+<span class="c1">#PBS -l walltime=01:00:00</span>
+<span class="c1">#PBS -l cput=12:00:00</span>
+module load singularity
+<span class="nb">cd</span> /extra/chrisreidy/singularity
+date
+singularity <span class="nb">exec</span> astropy.img python --version
+date
+</pre></div>
+</div>
+<p>This example uses PBS which is the schduler available on Ocelote.  ElGato uses LSF which has the same functions but different syntax.
+Run the job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub astropy.pbs
+</pre></div>
+</div>
+<p>It is usually possible to get an interactive session as well. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q windfall -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="singularity-and-mpi">
+<h2>2. Singularity and MPI<a class="headerlink" href="#singularity-and-mpi" title="Permalink to this headline">¶</a></h2>
+<p>Singularity supports MPI fairly well.  Since (by default) the network is the same insde and outside the container, the communication between containers usually just works.  The more complicated bit is making sure that the container has the right set of MPI libraries.  MPI is an open specification, but there are several implementations (OpenMPI, MVAPICH2, and Intel MPI to name three which are available on Ocelote) with some non-overlapping feature sets.  If the host and container are running different MPI implementations, or even different versions of the same implementation, tragedy may ensue.</p>
+<p>The general rule is that you want the version of MPI inside the container to be the same version or newer than the host.  You may be thinking that this is not good for the portability of your container, and you are right.  Containerizing MPI applications is not terribly difficult with Singularity, but it comes at the cost of additional requirements for the host system.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Many HPC Systems, like Ocelote, have highspeed, low latency networks that have special drivers. Ocelote and ElGato use Infiniband. When running MPI jobs, if the container doesn’t have the right libraries, it won’t be able to use those special interconnects to communicate between nodes.</p>
+</div>
+<p>Because you may have to build your own MPI enabled Singularity images (to get the versions to match), here is a 2.3 compatible example of what it may look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright (c) 2015-2016, Gregory M. Kurtzer. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># &quot;Singularity&quot; Copyright (c) 2016, The Regents of the University of     California,</span>
+<span class="c1"># through Lawrence Berkeley National Laboratory (subject to receipt of any</span>
+<span class="c1"># required approvals from the U.S. Dept. of Energy).  All rights reserved.</span>
+
+BootStrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+
+%runscript
+    <span class="nb">echo</span> <span class="s2">&quot;This is what happens when you run the container...&quot;</span>
+
+
+%post
+    <span class="nb">echo</span> <span class="s2">&quot;Hello from inside the container&quot;</span>
+    sed -i <span class="s1">&#39;s/$/ universe/&#39;</span> /etc/apt/sources.list
+    apt update
+    apt -y --allow-unauthenticated install vim build-essential wget     gfortran bison libibverbs-dev libibmad-dev libibumad-dev librdmacm-dev     libmlx5-dev libmlx4-dev
+    wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/    mvapich2-2.1.tar.gz
+    tar xvf mvapich2-2.1.tar.gz
+    <span class="nb">cd</span> mvapich2-2.1
+    ./configure --prefix<span class="o">=</span>/usr/local
+    make -j4
+    make install
+    /usr/local/bin/mpicc examples/hellow.c -o /usr/bin/hellow
+</pre></div>
+</div>
+<p>You could also build in everything in a Dockerfile and convert the image to Singularity at the end.</p>
+<p>Once you have a working MPI container, invoking it would look something like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load mvapich2
+mpirun -np <span class="m">4</span> singularity <span class="nb">exec</span> ./mycontainer.img /app.py arg1 arg2
+</pre></div>
+</div>
+<p>This will use the <strong>host MPI</strong> libraries to run in parallel, and assuming the image has what it needs, can work across many nodes.</p>
+<p>For a single node, you can also use the <strong>container MPI</strong> to run in parallel (usually you don’t want this)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load mvapich2
+singularity <span class="nb">exec</span> ./mycontainer.img mpirun -np <span class="m">4</span> /app.py arg1 arg2
+</pre></div>
+</div>
+</div>
+<div class="section" id="singularity-and-gpu-computing">
+<h2>3. Singularity and GPU Computing<a class="headerlink" href="#singularity-and-gpu-computing" title="Permalink to this headline">¶</a></h2>
+<p>GPU support in Singularity is fantastic</p>
+<p>Since Singularity supported docker containers, it has been fairly simple to utilize GPUs for machine learning code like TensorFlow. On Ocelote we have downloaded Docker images from Nvidia for most ML workflows, and converted them to Singularity.  They are kept in /unsupported/singularity/nvidia, and can be copied to your own directories.</p>
+<div class="section" id="tutorial-2">
+<h3>Tutorial #2<a class="headerlink" href="#tutorial-2" title="Permalink to this headline">¶</a></h3>
+<p>This example is a case of running a simple container using an interactive session.  You don’t need to know anything about machine learning.  From Ocelote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /extra/netid
+mkdir astro
+<span class="nb">cd</span> astro
+cp /unsupported/singularity/nvidia/nvidia-tensorflow.18.03-py3.simg .
+cp /unsupported/singularity/nvidia/tensorflow_example.py .
+<span class="c1"># Work from a compute node. This step is likely to take more than a minute depending on how busy the scheduler is.</span>
+qsub -I -N jobname -m bea -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+<span class="c1"># Load the singularity module</span>
+module load singularity
+<span class="nb">cd</span> /extra/netid/astro
+singularity <span class="nb">exec</span> --nv nvidia-tensorflow.18.03-py3.simg python tensorflow_example.py
+</pre></div>
+</div>
+<p>Please note that the –nv flag specifically passes the GPU drivers into the container. If you leave it out, the GPU will not be detected.</p>
+</div>
+<div class="section" id="tutorial-3">
+<h3>Tutorial #3<a class="headerlink" href="#tutorial-3" title="Permalink to this headline">¶</a></h3>
+<p>This example is a little different.  It demonstrates the ability to pull a Docker image, embed it in Singularity and run it on a GPU node.
+For TensorFlow, you can directly pull their latest GPU image and utilize it as follows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start an interactive session after you are on the login node.  Edit as needed:</span>
+qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+<span class="nb">cd</span> /extra/netid/astro
+<span class="c1"># Get the software</span>
+git clone https://github.com/tensorflow/models.git ~/models
+<span class="c1"># Pull the image</span>
+singularity pull docker://tensorflow/tensorflow:latest-gpu
+<span class="c1"># Run the code</span>
+singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python <span class="nv">$HOME</span>/models/tutorials/image/mnist/convolutional.py
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You probably noticed that we check out the models repository into your $HOME directory. This is because your $HOME and $WORK directories are only available inside the container if the root folders /home and /work exist inside the container. In the case of tensorflow-latest-gpu.img, the /work directory does not exist, so any files there are inaccessible to the container.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../atmosphere/boot.html" class="btn btn-neutral float-right" title="Booting an Atmosphere computer instance for your use!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="singularityintro.html" class="btn btn-neutral" title="Introduction to Singularity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, CyVerse.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/cyverse.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
