@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -25,22 +23,33 @@
   
 
   
+  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Advanced Docker" href="dockeradvanced.html" />
-    <link rel="prev" title="About CyVerse" href="../getting_started/about_cyverse.html" /> 
+  
+
+  
+    <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/detail-expand.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/question-answer.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Cybercarpentry_workshop_2018 0.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Advanced Docker" href="dockeradvanced.html"/>
+        <link rel="prev" title="About CyVerse" href="../getting_started/about_cyverse.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -81,10 +90,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+                <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
@@ -138,54 +144,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Cybercarpentry_workshop_2018</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Cybercarpentry_workshop_2018</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li><strong>Introduction to Docker</strong></li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Introduction to Docker</strong></li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/docker/dockerintro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -213,7 +199,7 @@
 <p>CyVerse staff have deployed an Ansible playbooks called <code class="docutils literal notranslate"><span class="pre">ez</span></code> installation which includes Docker that only requires you to type a short line of code.</p>
 <p>Start a featured instance on Jetstream [needs to insert link to Jetstream’s launching instance].</p>
 <p>Type in the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ezd
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ ezd
 
 * Updating ez docker and installing docker (this may take a few minutes, coffee break!)
 Cloning into &#39;/opt/cyverse-ez-docker&#39;...
@@ -229,20 +215,20 @@ To test docker, type: docker run hello-world
 </pre></div>
 </div>
 <p>Let’s test docker by running <cite>docker run hello-world</cite></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run hello-world
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run hello-world
 </pre></div>
 </div>
 <p>You should see an error like this</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Got permission denied <span class="k">while</span> trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/json?all<span class="o">=</span><span class="m">1</span>: dial unix /var/run/docker.sock: connect: permission denied
+<div class="highlight-bash notranslate"><div class="highlight"><pre>Got permission denied <span class="k">while</span> trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.35/containers/json?all<span class="o">=</span>1: dial unix /var/run/docker.sock: connect: permission denied
 </pre></div>
 </div>
 <p>This is because Docker needs root access to run Docker commands and so either can append <cite>sudo</cite> infront of each command (and you have sudo permissions on Jetstream instance) or add yourself to the Docker group using following instructions..</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo usermod -aG docker <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo usermod -aG docker <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>Log out and log back in so that your group membership is re-evaluated.</p>
 <p>Rerun the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> command to make sure the everything is working fine</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run hello-world
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run hello-world
 Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
 latest: Pulling from library/hello-world
 03f4658f8b78: Pull <span class="nb">complete</span>
@@ -254,11 +240,11 @@ Hello from Docker.
 This message shows that your installation appears to be working correctly.
 
 To generate this message, Docker took the following steps:
- <span class="m">1</span>. The Docker client contacted the Docker daemon.
- <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
- <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
     executable that produces the output you are currently reading.
- <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
     to your terminal.
 
 To try something more ambitious, you can run an Ubuntu container with:
@@ -279,28 +265,28 @@ https://docs.docker.com/engine/userguide/
 <p><strong>Containers</strong> - Running instances of Docker images. Containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS.</p>
 <p><strong>Images</strong> - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">inspect</span> <span class="pre">hello-world</span></code> and <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">history</span> <span class="pre">hello-world</span></code>.</p>
 <p>Now that we know what a container and image is, let’s run the following command in our terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run alpine
 </pre></div>
 </div>
 <p>What happened there? Similar to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> command in the demo above, <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code> command fetches the <code class="docutils literal notranslate"><span class="pre">alpine:latest</span></code> image from the Docker registry first, saves it in our system. However unlike <cite>hello-world</cite> run, here we don’t see any output on the screen. This is because <cite>alpine</cite> and <cite>ubuntu</cite> (which we see later) are base images and doesn’t have any executable that produces any kind of output. They however launches a container and since the container doesn’t have executable, they quickly exits. You can check the status of container by running the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker ps -l
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
-b4219971d6e5        alpine              <span class="s2">&quot;/bin/sh&quot;</span>           <span class="m">7</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">7</span> minutes ago                       vigilant_goodall
+b4219971d6e5        alpine              <span class="s2">&quot;/bin/sh&quot;</span>           <span class="m">7</span> minutes ago       Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">7</span> minutes ago                       vigilant_goodall
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-l</span></code> command shows the status of last container run and as you can see the container has been exited from the <code class="docutils literal notranslate"><span class="pre">alpine</span></code> run.</p>
 <p>Let’s add some commands to the container run this time.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine <span class="nb">echo</span> <span class="s2">&quot;Hello world&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run alpine <span class="nb">echo</span> <span class="s2">&quot;Hello world&quot;</span>
 Hello world
 </pre></div>
 </div>
 <p>OK, that’s some actual output. In this case, the Docker client dutifully ran the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command in our <code class="docutils literal notranslate"><span class="pre">alpine</span></code> container and then exited it. If you’ve noticed, all of that happened pretty quickly. Imagine booting up a virtual machine, running a command and then killing it. Now you know why they say containers are fast!</p>
 <p>Let’s say if you wanted to see files and folders inside the <code class="docutils literal notranslate"><span class="pre">alpine</span></code> container, then you can run the following</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine ls -l /
-total <span class="m">52</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run alpine ls -l /
+total 52
 drwxr-xr-x    <span class="m">2</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> bin
-drwxr-xr-x    <span class="m">5</span> root     root           <span class="m">340</span> Jan <span class="m">28</span> <span class="m">09</span>:52 dev
-drwxr-xr-x   <span class="m">14</span> root     root          <span class="m">4096</span> Jan <span class="m">28</span> <span class="m">09</span>:52 etc
+drwxr-xr-x    <span class="m">5</span> root     root           <span class="m">340</span> Jan <span class="m">28</span> 09:52 dev
+drwxr-xr-x   <span class="m">14</span> root     root          <span class="m">4096</span> Jan <span class="m">28</span> 09:52 etc
 drwxr-xr-x    <span class="m">2</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> home
 drwxr-xr-x    <span class="m">5</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> lib
 drwxr-xr-x    <span class="m">5</span> root     root          <span class="m">4096</span> Dec <span class="m">26</span>  <span class="m">2016</span> media
@@ -309,27 +295,27 @@ drwxr-xr-x    <span class="m">5</span> root     root          <span class="m">40
 </div>
 <p>When you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code>, you provided a command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/</span></code>, so Docker started the command specified and you saw the listing</p>
 <p>Try another command.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run alpine sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run alpine sh
 </pre></div>
 </div>
 <p>Wait, nothing happened! Is that a bug? Well, no. These interactive shells will exit after running any scripted commands such as <code class="docutils literal notranslate"><span class="pre">sh</span></code>, unless they are run in an interactive terminal - so for this example to not exit, you need to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">alpine</span> <span class="pre">sh</span></code>. You are now inside the container shell and you can try out a few commands like <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code>, <code class="docutils literal notranslate"><span class="pre">whoami</span></code> and others.</p>
 <p>Before doing that, now it’s time to see the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command which shows you all containers that are currently running.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 </pre></div>
 </div>
 <p>Since no containers are running, you see a blank line. Let’s try a more useful variant: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
-36171a5da744        alpine              <span class="s2">&quot;/bin/sh&quot;</span>                <span class="m">5</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">2</span> minutes ago                        fervent_newton
-a6a9d46d0b2f        alpine             <span class="s2">&quot;echo &#39;hello from alp&quot;</span>    <span class="m">6</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">6</span> minutes ago                        lonely_kilby
-ff0a5c3750b9        alpine             <span class="s2">&quot;ls -l&quot;</span>                   <span class="m">8</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">8</span> minutes ago                        elated_ramanujan
-c317d0a9e3d2        hello-world         <span class="s2">&quot;/hello&quot;</span>                 <span class="m">34</span> seconds ago      Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">12</span> minutes ago                       stupefied_mcclintock
+36171a5da744        alpine              <span class="s2">&quot;/bin/sh&quot;</span>                <span class="m">5</span> minutes ago       Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">2</span> minutes ago                        fervent_newton
+a6a9d46d0b2f        alpine             <span class="s2">&quot;echo &#39;hello from alp&quot;</span>    <span class="m">6</span> minutes ago       Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">6</span> minutes ago                        lonely_kilby
+ff0a5c3750b9        alpine             <span class="s2">&quot;ls -l&quot;</span>                   <span class="m">8</span> minutes ago       Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">8</span> minutes ago                        elated_ramanujan
+c317d0a9e3d2        hello-world         <span class="s2">&quot;/hello&quot;</span>                 <span class="m">34</span> seconds ago      Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">12</span> minutes ago                       stupefied_mcclintock
 </pre></div>
 </div>
 <p>What you see above is a list of all containers that you ran. Notice that the STATUS column shows that these containers exited a few minutes ago.</p>
 <p>If you want to run scripted commands such as <code class="docutils literal notranslate"><span class="pre">sh</span></code>, they should be run in an interactive terminal. In addition, interactive terminal allows you to run more than one command in a container. Let’s try that now:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name alpine_test alpine sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run -it --name alpine_test alpine sh
 / <span class="c1"># whoami</span>
 root
 </pre></div>
@@ -340,25 +326,25 @@ root
 <p class="last">You don’t really have to use <cite>sh</cite> as by default when you enter into interactive model, it puts you into <cite>sh</cite> shell</p>
 </div>
 <p>Exit out of the container by giving the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/ <span class="c1"># exit</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>/ <span class="c1"># exit</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>If you type <code class="docutils literal notranslate"><span class="pre">exit</span></code> your <strong>container</strong> will exit and is no longer active. To check that, try the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+<div class="highlight-default notranslate"><div class="highlight"><pre>$ docker ps -l
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                          PORTS                    NAMES
 de4bbc3eeaec        alpine                &quot;/bin/sh&quot;                3 minutes ago       Exited (0) About a minute ago                            alpine_test
 </pre></div>
 </div>
 <p>If you want to keep the container active, then you can use keys <code class="docutils literal notranslate"><span class="pre">Ctrl+p,</span> <span class="pre">Ctrl+q</span></code>. To make sure that it is not exited run the same <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code> command again:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker ps -l
+<div class="highlight-default notranslate"><div class="highlight"><pre>$ docker ps -l
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                         PORTS                    NAMES
 0db38ea51a48        alpine                &quot;sh&quot;                     3 minutes ago       Up 3 minutes                                            alpine_test
 </pre></div>
 </div>
 <p>Now if you want to get back into that container, then you can type <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">attach</span> <span class="pre">&lt;container</span> <span class="pre">id&gt;</span></code>. This way you can save your container:</p>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker attach alpine_test
+<div class="last highlight-default notranslate"><div class="highlight"><pre>$ docker attach alpine_test
 </pre></div>
 </div>
 </div>
@@ -366,9 +352,9 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 <h3>3.1 Running Docker container from a custom Docker image<a class="headerlink" href="#running-docker-container-from-a-custom-docker-image" title="Permalink to this headline">¶</a></h3>
 <p>Let’s run a Docker container from a custom Docker image and we will learn how Docker images are built using Dockerfile. But first pull a <cite>lolcow</cite> Docker image from Dockerhub</p>
 <a class="reference internal image-reference" href="../_images/lolcow_docker.png"><img alt="../_images/lolcow_docker.png" src="../_images/lolcow_docker.png" style="width: 750px; height: 350px;" /></a>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm --name lolcow upendradevisetty/lolcow_docker:1.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run --rm --name lolcow upendradevisetty/lolcow_docker:1.0
 Unable to find image <span class="s1">&#39;upendradevisetty/lolcow_docker:1.0&#39;</span> locally
-<span class="m">1</span>.0: Pulling from upendradevisetty/lolcow_docker
+1.0: Pulling from upendradevisetty/lolcow_docker
 b234f539f7a1: Already exists
 55172d420b43: Already exists
 5ba5bbeb6b91: Already exists
@@ -413,10 +399,10 @@ Status: Downloaded newer image <span class="k">for</span> upendradevisetty/lolco
 <div class="section" id="docker-images">
 <h2>4. Docker images<a class="headerlink" href="#docker-images" title="Permalink to this headline">¶</a></h2>
 <p>Docker images are the basis of containers. In the previous example, you pulled the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> command.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker images
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker images
 REPOSITORY     TAG       IMAGE ID        CREATED           SIZE
 hello-world    latest    690ed74de00f    <span class="m">5</span> months ago      <span class="m">960</span> B
-alpine         latest    3fd9065eaf02    <span class="m">3</span> months ago      <span class="m">4</span>.15MB
+alpine         latest    3fd9065eaf02    <span class="m">3</span> months ago      4.15MB
 .........
 </pre></div>
 </div>
@@ -559,16 +545,15 @@ If you are not logged into GitHub, the system prompts you to enter GitHub creden
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dockeradvanced.html" class="btn btn-neutral float-right" title="Advanced Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dockeradvanced.html" class="btn btn-neutral float-right" title="Advanced Docker" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../getting_started/about_cyverse.html" class="btn btn-neutral" title="About CyVerse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../getting_started/about_cyverse.html" class="btn btn-neutral" title="About CyVerse" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -577,11 +562,11 @@ If you are not logged into GitHub, the system prompts you to enter GitHub creden
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, CyVerse.
+        &copy; Copyright 2020, CyVerse.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -600,18 +585,20 @@ If you are not logged into GitHub, the system prompts you to enter GitHub creden
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.1.0',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
       <script type="text/javascript" src="../_static/cyverse.js"></script>
+      <script type="text/javascript" src="../_static/detail-expand.js"></script>
+      <script type="text/javascript" src="../_static/question-answer.js"></script>
+      <script type="text/javascript" src="../_static/intercom-script-for-learning.js"></script>
 
   
 
@@ -620,11 +607,14 @@ If you are not logged into GitHub, the system prompts you to enter GitHub creden
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

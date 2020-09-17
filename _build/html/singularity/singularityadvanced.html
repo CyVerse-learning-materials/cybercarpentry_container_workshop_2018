@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -25,22 +23,33 @@
   
 
   
+  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Booting an Atmosphere computer instance for your use!" href="../atmosphere/boot.html" />
-    <link rel="prev" title="Introduction to Singularity" href="singularityintro.html" /> 
+  
+
+  
+    <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/detail-expand.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/question-answer.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Cybercarpentry_workshop_2018 0.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Booting an Atmosphere computer instance for your use!" href="../atmosphere/boot.html"/>
+        <link rel="prev" title="Introduction to Singularity" href="singularityintro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -81,10 +90,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+                <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
@@ -132,54 +138,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Cybercarpentry_workshop_2018</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Cybercarpentry_workshop_2018</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li><strong>Advanced Singularity</strong></li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Advanced Singularity</strong></li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/singularity/singularityadvanced.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -194,7 +180,7 @@
 <p>Conducting analyses on high performance computing clusters happens through very different patterns of interaction than running analyses on a VM.  When you login, you are on a node that is shared with lots of people.  Trying to run jobs on that node is not “high performance” at all.  Those login nodes are just intended to be used for moving files, editing files, and launching jobs.</p>
 <p>Most jobs on an HPC cluster are neither interactive, nor realtime.  When you submit a job to the scheduler, you must tell it what resources you need (e.g. how many nodes, what type of nodes) and what you want to run.  Then the scheduler finds resources matching your requirements, and runs the job for you when it can.</p>
 <p>You can run a simple command on the login node as opposed to a large job:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load singularity
+<div class="highlight-bash notranslate"><div class="highlight"><pre>module load singularity
 singularity <span class="nb">exec</span> docker://python:latest python --version
 </pre></div>
 </div>
@@ -217,9 +203,9 @@ singularity <span class="nb">exec</span> docker://python:latest python --version
 <li>Some packages are more complex than “pip install numpy”</li>
 <li>Include your bind points</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BootStrap: yum
-OSVersion: <span class="m">7</span>
-MirrorURL: http://mirror.centos.org/centos-%<span class="o">{</span>OSVERSION<span class="o">}</span>/%<span class="o">{</span>OSVERSION<span class="o">}</span>/os/<span class="nv">$basearch</span>/
+<div class="highlight-bash notranslate"><div class="highlight"><pre>BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%<span class="o">{</span>OSVERSION<span class="o">}</span>/%<span class="o">{</span>OSVERSION<span class="o">}</span>/os/<span class="nv">$ba</span>search/
 Include: yum wget
 <span class="c1"># best to build up container using kickstart mentality.</span>
 <span class="c1"># ie, to add more packages to image,</span>
@@ -241,7 +227,7 @@ Include: yum wget
    <span class="c1"># create bind points for storage.</span>
    mkdir /extra
    mkdir /xdisk
-   <span class="nb">exit</span> <span class="m">0</span>
+   <span class="nb">exit</span> 0
 %runscript
  <span class="c1"># commands to be executed when the container runs</span>
  <span class="nb">echo</span> <span class="s2">&quot;Arguments received: </span><span class="nv">$*</span><span class="s2">&quot;</span>
@@ -251,22 +237,22 @@ Include: yum wget
 </pre></div>
 </div>
 <p>Create container</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity build astropy.img astropy.recipe
+<div class="highlight-bash notranslate"><div class="highlight"><pre>singularity build astropy.img astropy.recipe
 </pre></div>
 </div>
 <p>The next step is to copy this singularity to one of your directories on Ocelote. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp astropy.img chrisreidy@filexfer.hpc.arizona.edu:
+<div class="highlight-bash notranslate"><div class="highlight"><pre>scp astropy.img chrisreidy@filexfer.hpc.arizona.edu:
 </pre></div>
 </div>
 <p>Log into home directory on Ocelote then “mv” file to /extra/chrisreidy/singularity
 Test with these commands</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load singularity
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ module load singularity
 $ singularity <span class="nb">exec</span> astropy.img python --version
-Python <span class="m">2</span>.7.5
+Python 2.7.5
 </pre></div>
 </div>
 <p>On an HPC system, your job submission script would look something like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">###========================================</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1">###========================================</span>
 <span class="c1">#!/bin/bash</span>
 <span class="c1">#PBS -N singularity-job</span>
 <span class="c1">#PBS -W group_list=GroupName</span>
@@ -283,11 +269,11 @@ date
 </div>
 <p>This example uses PBS which is the schduler available on Ocelote.  ElGato uses LSF which has the same functions but different syntax.
 Run the job:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub astropy.pbs
+<div class="highlight-bash notranslate"><div class="highlight"><pre>qsub astropy.pbs
 </pre></div>
 </div>
 <p>It is usually possible to get an interactive session as well. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q windfall -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+<div class="highlight-bash notranslate"><div class="highlight"><pre>qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q windfall -l <span class="k">select</span><span class="o">=</span>1:ncpus<span class="o">=</span>28:mem<span class="o">=</span>168gb -l <span class="nv">cput</span><span class="o">=</span>1:0:0 -l <span class="nv">walltime</span><span class="o">=</span>1:0:0
 </pre></div>
 </div>
 </div>
@@ -301,7 +287,7 @@ Run the job:</p>
 <p class="last">Many HPC Systems, like Ocelote, have highspeed, low latency networks that have special drivers. Ocelote and ElGato use Infiniband. When running MPI jobs, if the container doesn’t have the right libraries, it won’t be able to use those special interconnects to communicate between nodes.</p>
 </div>
 <p>Because you may have to build your own MPI enabled Singularity images (to get the versions to match), here is a 2.3 compatible example of what it may look like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright (c) 2015-2016, Gregory M. Kurtzer. All rights reserved.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># Copyright (c) 2015-2016, Gregory M. Kurtzer. All rights reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># &quot;Singularity&quot; Copyright (c) 2016, The Regents of the University of     California,</span>
 <span class="c1"># through Lawrence Berkeley National Laboratory (subject to receipt of any</span>
@@ -332,13 +318,13 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 </div>
 <p>You could also build in everything in a Dockerfile and convert the image to Singularity at the end.</p>
 <p>Once you have a working MPI container, invoking it would look something like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load mvapich2
+<div class="highlight-bash notranslate"><div class="highlight"><pre>module load mvapich2
 mpirun -np <span class="m">4</span> singularity <span class="nb">exec</span> ./mycontainer.img /app.py arg1 arg2
 </pre></div>
 </div>
 <p>This will use the <strong>host MPI</strong> libraries to run in parallel, and assuming the image has what it needs, can work across many nodes.</p>
 <p>For a single node, you can also use the <strong>container MPI</strong> to run in parallel (usually you don’t want this)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load mvapich2
+<div class="highlight-bash notranslate"><div class="highlight"><pre>module load mvapich2
 singularity <span class="nb">exec</span> ./mycontainer.img mpirun -np <span class="m">4</span> /app.py arg1 arg2
 </pre></div>
 </div>
@@ -350,13 +336,13 @@ singularity <span class="nb">exec</span> ./mycontainer.img mpirun -np <span clas
 <div class="section" id="tutorial-2">
 <h3>Tutorial #2<a class="headerlink" href="#tutorial-2" title="Permalink to this headline">¶</a></h3>
 <p>This example is a case of running a simple container using an interactive session.  You don’t need to know anything about machine learning.  From Ocelote:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /extra/netid
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">cd</span> /extra/netid
 mkdir astro
 <span class="nb">cd</span> astro
 cp /unsupported/singularity/nvidia/nvidia-tensorflow.18.03-py3.simg .
 cp /unsupported/singularity/nvidia/tensorflow_example.py .
 <span class="c1"># Work from a compute node. This step is likely to take more than a minute depending on how busy the scheduler is.</span>
-qsub -I -N jobname -m bea -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+qsub -I -N jobname -m bea -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span>1:ncpus<span class="o">=</span>28:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span>1:0:0 -l <span class="nv">walltime</span><span class="o">=</span>1:0:0
 <span class="c1"># Load the singularity module</span>
 module load singularity
 <span class="nb">cd</span> /extra/netid/astro
@@ -369,15 +355,15 @@ singularity <span class="nb">exec</span> --nv nvidia-tensorflow.18.03-py3.simg p
 <h3>Tutorial #3<a class="headerlink" href="#tutorial-3" title="Permalink to this headline">¶</a></h3>
 <p>This example is a little different.  It demonstrates the ability to pull a Docker image, embed it in Singularity and run it on a GPU node.
 For TensorFlow, you can directly pull their latest GPU image and utilize it as follows.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start an interactive session after you are on the login node.  Edit as needed:</span>
-qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">28</span>:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span><span class="m">1</span>:0:0 -l <span class="nv">walltime</span><span class="o">=</span><span class="m">1</span>:0:0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># Start an interactive session after you are on the login node.  Edit as needed:</span>
+qsub -I -N jobname -W <span class="nv">group_list</span><span class="o">=</span>YourGroup -q standard -l <span class="k">select</span><span class="o">=</span>1:ncpus<span class="o">=</span>28:mem<span class="o">=</span>168gb:ngpus<span class="o">=</span><span class="m">1</span> -l <span class="nv">cput</span><span class="o">=</span>1:0:0 -l <span class="nv">walltime</span><span class="o">=</span>1:0:0
 <span class="nb">cd</span> /extra/netid/astro
 <span class="c1"># Get the software</span>
 git clone https://github.com/tensorflow/models.git ~/models
 <span class="c1"># Pull the image</span>
 singularity pull docker://tensorflow/tensorflow:latest-gpu
 <span class="c1"># Run the code</span>
-singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python <span class="nv">$HOME</span>/models/tutorials/image/mnist/convolutional.py
+singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python $HOME/models/tutorials/image/mnist/convolutional.py
 </pre></div>
 </div>
 <div class="admonition note">
@@ -390,16 +376,15 @@ singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python 
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../atmosphere/boot.html" class="btn btn-neutral float-right" title="Booting an Atmosphere computer instance for your use!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../atmosphere/boot.html" class="btn btn-neutral float-right" title="Booting an Atmosphere computer instance for your use!" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="singularityintro.html" class="btn btn-neutral" title="Introduction to Singularity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="singularityintro.html" class="btn btn-neutral" title="Introduction to Singularity" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -408,11 +393,11 @@ singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python 
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, CyVerse.
+        &copy; Copyright 2020, CyVerse.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -431,18 +416,20 @@ singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python 
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.1.0',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
       <script type="text/javascript" src="../_static/cyverse.js"></script>
+      <script type="text/javascript" src="../_static/detail-expand.js"></script>
+      <script type="text/javascript" src="../_static/question-answer.js"></script>
+      <script type="text/javascript" src="../_static/intercom-script-for-learning.js"></script>
 
   
 
@@ -451,11 +438,14 @@ singularity <span class="nb">exec</span> --nv tensorflow-latest-gpu.simg python 
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
