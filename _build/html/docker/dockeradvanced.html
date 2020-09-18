@@ -8,11 +8,9 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advanced Docker &mdash; Cybercarpentry_workshop_2018 0.1.0 documentation</title>
+  <title>Advanced Docker &mdash; YOUR GUIDE NAME HERE 2.0 documentation</title>
   
 
-  
-  
   
   
 
@@ -25,22 +23,33 @@
   
 
   
+  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Additional Docker Demo’s" href="dockerdemos.html" />
-    <link rel="prev" title="Introduction to Docker" href="dockerintro.html" /> 
+  
+
+  
+    <link rel="stylesheet" href="../_static/cyverse.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/detail-expand.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/question-answer.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="YOUR GUIDE NAME HERE 2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Additional Docker Demo’s" href="dockerdemos.html"/>
+        <link rel="prev" title="Introduction to Docker" href="dockerintro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -50,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Cybercarpentry_workshop_2018
+            <a href="../index.html" class="icon icon-home"> YOUR GUIDE NAME HERE
           
 
           
@@ -60,7 +69,7 @@
             
             
               <div class="version">
-                0.1.0
+                2.0
               </div>
             
           
@@ -81,10 +90,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
+                <p class="caption"><span class="caption-text">Cybercarpentry workshop On Containers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/main.html"><strong>Workshop Code of Conduct</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html"><strong>Pre-Workshop Setup</strong></a></li>
@@ -130,54 +136,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Cybercarpentry_workshop_2018</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">YOUR GUIDE NAME HERE</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li><strong>Advanced Docker</strong></li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Advanced Docker</strong></li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/docker/dockeradvanced.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -216,7 +202,7 @@
 <ul class="simple">
 <li>Download some test data for testing <code class="docutils literal notranslate"><span class="pre">diamondblast:1.0</span></code> image using bind mount method</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir diamond_test <span class="o">&amp;&amp;</span> <span class="nb">cd</span> diamond_test
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ mkdir diamond_test <span class="o">&amp;&amp;</span> <span class="nb">cd</span> diamond_test
 $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/mouse.1.protein.faa
 $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/zebrafish.1.protein.faa
 </pre></div>
@@ -225,7 +211,7 @@ $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/ze
 <li>Making the blast database</li>
 </ul>
 <p>In order to set up a reference database for DIAMOND, the makedb command needs to be executed with the following command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 makedb --in /data/zebrafish.1.protein.faa -d /data/zebrafish_db
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run --rm -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 makedb --in /data/zebrafish.1.protein.faa -d /data/zebrafish_db
 </pre></div>
 </div>
 <p>This will create a binary DIAMOND database file with the specified name <code class="docutils literal notranslate"><span class="pre">zebrafish_db.dmnd</span></code> in the <code class="docutils literal notranslate"><span class="pre">diamond_test</span></code> direcotry</p>
@@ -233,7 +219,7 @@ $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/ze
 <li>Running the alignment</li>
 </ul>
 <p>The alignment task may then be initiated using the blastp command like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 blastp --db /data/zebrafish_db -q /data/mouse.1.protein.faa -o /data/matches.m
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data upendradevisetty/diamondblast:1.0 blastp --db /data/zebrafish_db -q /data/mouse.1.protein.faa -o /data/matches.m
 </pre></div>
 </div>
 <p>The output file here is specified with the <code class="docutils literal notranslate"><span class="pre">–o</span></code> option and named <code class="docutils literal notranslate"><span class="pre">matches.m8</span></code>. By default, it is generated in BLAST tabular format.</p>
@@ -245,7 +231,7 @@ $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/ze
 - The third field is optional, and is a comma-separated list of options, such as <code class="docutils literal notranslate"><span class="pre">ro</span></code>.</p>
 </div>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">inspect</span> <span class="pre">$(docker</span> <span class="pre">ps</span> <span class="pre">-lq)</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-A</span> <span class="pre">9</span> <span class="pre">Mounts</span></code> to verify that the bind mount was created correctly. Look for the “Mounts” section</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker inspect <span class="k">$(</span>docker ps -lq<span class="k">)</span> <span class="p">|</span> grep -A <span class="m">9</span> Mounts
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker inspect <span class="k">$(</span>docker ps -lq<span class="k">)</span> <span class="p">|</span> grep -A <span class="m">9</span> Mounts
 <span class="s2">&quot;Mounts&quot;</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">&quot;Type&quot;</span>: <span class="s2">&quot;bind&quot;</span>,
@@ -272,7 +258,7 @@ $ wget https://raw.githubusercontent.com/upendrak/diamond_blast_docker/master/ze
 </ul>
 <p>Let’s now create a simple web app with Docker Compose using Flask and Redis. We will end up with a Flask container and a Redis container all on one host.</p>
 <p>2.1.1 Clone the repo that container Docker compose code</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/upendrak/compose_flask.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ git clone https://github.com/upendrak/compose_flask.git
 $ <span class="nb">cd</span> compose_flask
 </pre></div>
 </div>
@@ -295,11 +281,11 @@ $ <span class="nb">cd</span> compose_flask
 <ol class="arabic simple" start="3">
 <li>Lastly, run docker-compose up and Compose will start and run your entire app, determining the right order to start everything in, and building and pulling any images as necessary</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose up -d
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker-compose up -d
 
 Building web
-Step <span class="m">1</span>/5 : FROM python:2.7
-<span class="m">2</span>.7: Pulling from library/python
+Step 1/5 : FROM python:2.7
+2.7: Pulling from library/python
 f49cf87b52c1: Already exists
 7b491c575b06: Already exists
 b313b08bab3b: Already exists
@@ -311,26 +297,26 @@ c308c099d654: Pull <span class="nb">complete</span>
 Digest: sha256:8cb593cb9cd1834429f0b4953a25617a8457e2c79b3e111c0f70bffd21acc467
 Status: Downloaded newer image <span class="k">for</span> python:2.7
  ---&gt; 9e92c8430ba0
-Step <span class="m">2</span>/5 : ADD . /code
+Step 2/5 : ADD . /code
  ---&gt; 746bcecfc3c9
-Step <span class="m">3</span>/5 : WORKDIR /code
+Step 3/5 : WORKDIR /code
  ---&gt; c4cf3d6cb147
 Removing intermediate container 84d850371a36
-Step <span class="m">4</span>/5 : RUN pip install -r requirements.txt
+Step 4/5 : RUN pip install -r requirements.txt
  ---&gt; Running in d74c2e1cfbf7
-Collecting flask <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting flask <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading Flask-0.12.2-py2.py3-none-any.whl <span class="o">(</span>83kB<span class="o">)</span>
-Collecting redis <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line <span class="m">2</span><span class="o">))</span>
+Collecting redis <span class="o">(</span>from -r requirements.txt <span class="o">(</span>line 2<span class="o">))</span>
   Downloading redis-2.10.6-py2.py3-none-any.whl <span class="o">(</span>64kB<span class="o">)</span>
-Collecting itsdangerous&gt;<span class="o">=</span><span class="m">0</span>.21 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting itsdangerous&gt;<span class="o">=</span>0.21 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading itsdangerous-0.24.tar.gz <span class="o">(</span>46kB<span class="o">)</span>
-Collecting Jinja2&gt;<span class="o">=</span><span class="m">2</span>.4 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting Jinja2&gt;<span class="o">=</span>2.4 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading Jinja2-2.10-py2.py3-none-any.whl <span class="o">(</span>126kB<span class="o">)</span>
-Collecting Werkzeug&gt;<span class="o">=</span><span class="m">0</span>.7 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting Werkzeug&gt;<span class="o">=</span>0.7 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading Werkzeug-0.14.1-py2.py3-none-any.whl <span class="o">(</span>322kB<span class="o">)</span>
-Collecting click&gt;<span class="o">=</span><span class="m">2</span>.0 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting click&gt;<span class="o">=</span>2.0 <span class="o">(</span>from flask-&gt;-r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading click-6.7-py2.py3-none-any.whl <span class="o">(</span>71kB<span class="o">)</span>
-Collecting MarkupSafe&gt;<span class="o">=</span><span class="m">0</span>.23 <span class="o">(</span>from Jinja2&gt;<span class="o">=</span><span class="m">2</span>.4-&gt;flask-&gt;-r requirements.txt <span class="o">(</span>line <span class="m">1</span><span class="o">))</span>
+Collecting MarkupSafe&gt;<span class="o">=</span>0.23 <span class="o">(</span>from Jinja2&gt;<span class="o">=</span>2.4-&gt;flask-&gt;-r requirements.txt <span class="o">(</span>line 1<span class="o">))</span>
   Downloading MarkupSafe-1.0.tar.gz
 Building wheels <span class="k">for</span> collected packages: itsdangerous, MarkupSafe
   Running setup.py bdist_wheel <span class="k">for</span> itsdangerous: started
@@ -344,7 +330,7 @@ Installing collected packages: itsdangerous, MarkupSafe, Jinja2, Werkzeug, click
 Successfully installed Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7 flask-0.12.2 itsdangerous-0.24 redis-2.10.6
  ---&gt; 5cc574ff32ed
 Removing intermediate container d74c2e1cfbf7
-Step <span class="m">5</span>/5 : CMD python app.py
+Step 5/5 : CMD python app.py
  ---&gt; Running in 3ddb7040e8be
  ---&gt; e911b8e8979f
 Removing intermediate container 3ddb7040e8be
@@ -389,9 +375,9 @@ Successfully tagged composeflask_web:latest
 <li>Launch a Jupyter notebook conatiner</li>
 </ol>
 <p>Docker allows us to run a ‘ready to go’ Jupyter data science stack in what’s known as a container:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ezj
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ ezj
 /usr/bin/python3
-DEBUG: using python version <span class="m">3</span>
+DEBUG: using python version 3
 DEBUG: downloading anaconda binary, may take a few minutes
 DEBUG: install Anaconda
 <span class="nv">PREFIX</span><span class="o">=</span>/opt/anaconda3
@@ -399,7 +385,7 @@ installing: python-3.6.4-hc3d631a_1 ...
 </pre></div>
 </div>
 <p>The last line is a URL that we need to copy and paste into our browser to access our new Jupyter stack:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    Copy/paste this URL into your browser when you connect <span class="k">for</span> the first time,
+<div class="highlight-bash notranslate"><div class="highlight"><pre>    Copy/paste this URL into your browser when you connect <span class="k">for</span> the first time,
 to login with a token:
     http://149.165.169.252:8888/?token<span class="o">=</span>13fffde91fc7006441e4e68656bb1385945fc26216b446be
 </pre></div>
@@ -426,7 +412,7 @@ to login with a token:
 </ol>
 <p>Next, we will see a Docker image from Rocker which will allow us to run RStudio inside the container and has many useful R packages already installed.</p>
 <a class="reference internal image-reference" href="../_images/rstudio_ss.png"><img alt="../_images/rstudio_ss.png" src="../_images/rstudio_ss.png" style="width: 750px; height: 350px;" /></a>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run --rm -d -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data -p <span class="m">8787</span>:8787 rocker/rstudio:3.5.1
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ docker run --rm -d -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:/data -p 8787:8787 rocker/rstudio:3.5.1
 330242b370fa38c2158f3ba31b09fb5ef41bc64763baeebdeff10008f3d37186
 </pre></div>
 </div>
@@ -435,9 +421,9 @@ to login with a token:
 <p class="last"><code class="docutils literal notranslate"><span class="pre">–rm</span></code> ensures that when we quit the container, the container is deleted. If we did not do this, everytime we run a container, a version of it will be saved to our local computer. This can lead to the eventual wastage of a lot of disk space until we manually remove these containers.</p>
 </div>
 <p>The command above will lead RStudio-Server to launch invisibly. To connect to it, open a browser and enter &lt;ipaddress&gt;:8787 on cloud</p>
-<a class="reference internal image-reference" href="../_images/rstudio_login2.png"><img alt="../_images/rstudio_login2.png" src="../_images/rstudio_login2.png" style="width: 750px; height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/rstudio-4.png"><img alt="../_images/rstudio-4.png" src="../_images/rstudio-4.png" style="width: 750px; height: 350px;" /></a>
 <p>Enter <code class="docutils literal notranslate"><span class="pre">rstudio</span></code> as username and password. Finally Rstudio shows up and you can run your R command from here</p>
-<a class="reference internal image-reference" href="../_images/rstudio_login.png"><img alt="../_images/rstudio_login.png" src="../_images/rstudio_login.png" style="width: 750px; height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/rstudio-5.png"><img alt="../_images/rstudio-5.png" src="../_images/rstudio-5.png" style="width: 750px; height: 350px;" /></a>
 <p>In order to see the directory that is currently mounted on inside the container, click <cite>…</cite> in the right hand down window of Rstudio which open up a dialog box. Now enter <cite>/data</cite> which is the location of mounted directory inside the container</p>
 <a class="reference internal image-reference" href="../_images/rstudio-2.png"><img alt="../_images/rstudio-2.png" src="../_images/rstudio-2.png" style="width: 750px; height: 350px;" /></a>
 <a class="reference internal image-reference" href="../_images/rstudio-3.png"><img alt="../_images/rstudio-3.png" src="../_images/rstudio-3.png" style="width: 750px; height: 350px;" /></a>
@@ -446,16 +432,15 @@ to login with a token:
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dockerdemos.html" class="btn btn-neutral float-right" title="Additional Docker Demo’s" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dockerdemos.html" class="btn btn-neutral float-right" title="Additional Docker Demo’s" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dockerintro.html" class="btn btn-neutral" title="Introduction to Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dockerintro.html" class="btn btn-neutral" title="Introduction to Docker" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -464,11 +449,11 @@ to login with a token:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, CyVerse.
+        &copy; Copyright 2020, CyVerse.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -486,19 +471,20 @@ to login with a token:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
-            LANGUAGE:'None',
+            VERSION:'2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/jquery.tablesorter.min.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/cyverse.js"></script>
+      <script type="text/javascript" src="../_static/detail-expand.js"></script>
+      <script type="text/javascript" src="../_static/question-answer.js"></script>
+      <script type="text/javascript" src="../_static/intercom-script-for-learning.js"></script>
 
   
 
@@ -507,11 +493,14 @@ to login with a token:
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

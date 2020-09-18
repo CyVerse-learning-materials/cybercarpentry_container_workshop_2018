@@ -313,13 +313,13 @@ Next, we will see a Docker image from Rocker which will allow us to run RStudio 
 
 The command above will lead RStudio-Server to launch invisibly. To connect to it, open a browser and enter <ipaddress>:8787 on cloud 
 
-.. image:: ../img/rstudio_login2.png
+.. image:: ../img/rstudio-4.png
   :width: 750
   :height: 350
 
 Enter ``rstudio`` as username and password. Finally Rstudio shows up and you can run your R command from here
 
-.. image:: ../img/rstudio_login.png
+.. image:: ../img/rstudio-5.png
   :width: 750
   :height: 350
 
